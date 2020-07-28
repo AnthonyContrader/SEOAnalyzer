@@ -1,1 +1,2 @@
-# SEOAnalyzer
+# SAMPLE
+Sample Projects
