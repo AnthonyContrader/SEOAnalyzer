@@ -7,18 +7,17 @@ import it.contrader.main.MainDispatcher;
 public class HomeUserView extends AbstractView{
 
 	String choice;
+	String URL; 
+	Request request = new Request();
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("\n-----Purtroppo in questo sample l'utente non puà fare nulla, ci scusiamo per il disagio.-----");
-
 	}
 
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
-		System.out.println("NESSUNA OPZIONE DISPONIBILE!");
-		System.out.println("\n Esatto, puoi solo uscire...");
+		System.out.println("(I)nserisci URL (E)sci");
 		choice = this.getInput();
 
 	}
@@ -26,14 +25,17 @@ public class HomeUserView extends AbstractView{
 	@Override
 	public void submit() {
 
-		switch (choice) {
+		switch (choice.toLowerCase()) {
 
 		case "e":
-			MainDispatcher.getInstance().callAction("Login", "doControl", null);
+			MainDispatcher.getInstance().callAction("Init", "doControl", null);
 			break;
-
+		case "i":
+			URL = this.getInput();
+			request.put("URL", URL);
+			MainDispatcher.getInstance().callAction("URL", "doControl", request);
 		default:
-			MainDispatcher.getInstance().callAction("Login", "doControl", null);
+			MainDispatcher.getInstance().callAction("Init", "doControl", null);
 		}
 	}
 

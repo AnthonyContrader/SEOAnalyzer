@@ -57,7 +57,7 @@ public class HomeAdminView extends AbstractView {
         	MainDispatcher.getInstance().callAction("Login", "doControl", null);
         	break;
         default:
-        	
+   
             request.put("choice", choice);
         	MainDispatcher.getInstance().callAction("Login", "doControl", request);
         }
