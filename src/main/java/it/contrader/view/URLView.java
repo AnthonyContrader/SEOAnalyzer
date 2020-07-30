@@ -1,5 +1,6 @@
 package it.contrader.view;
 
+import it.contrader.controller.ContaLink;
 import it.contrader.controller.ContaParole;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
@@ -27,9 +28,11 @@ public class URLView extends AbstractView {
 		switch(choice) {
 			case "1":
 				request = ContaParole.conta(request);
+				System.out.println("Terminata conta");
 				MainDispatcher.getInstance().callView("ContaParole", request);
 			case "2": 
-				MainDispatcher.getInstance().callView("HomeAdmin", request);
+				request = ContaLink.conta(request);
+				MainDispatcher.getInstance().callView("ContaLink", request);
 			case "3": 
 				MainDispatcher.getInstance().callView("HomeAdmin", request);
 			case "4": 
