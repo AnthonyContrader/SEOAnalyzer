@@ -1,7 +1,5 @@
 package it.contrader.view;
-import it.contrader.controller.ContaImmagini;
-import it.contrader.controller.ContaParole;
-import it.contrader.controller.Request;
+import it.contrader.controller.*;
 import it.contrader.main.MainDispatcher;
 
 public class ContaImmaginiView extends AbstractView {
@@ -26,7 +24,7 @@ public class ContaImmaginiView extends AbstractView {
 	public void submit() {
 		switch(choice) {
 			case "1":
-				request = ContaParole.conta(request);
+				ContaParole.conta(request);
 				MainDispatcher.getInstance().callView("ContaParole", request);
 			case "2": 
 				MainDispatcher.getInstance().callView("HomeAdmin", request);

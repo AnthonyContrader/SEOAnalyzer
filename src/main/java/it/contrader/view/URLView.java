@@ -1,8 +1,7 @@
 package it.contrader.view;
 
 
-import it.contrader.controller.ContaParole;
-import it.contrader.controller.Request;
+import it.contrader.controller.*;
 import it.contrader.main.MainDispatcher;
 
 public class URLView extends AbstractView {
