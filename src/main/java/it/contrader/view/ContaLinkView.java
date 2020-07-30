@@ -10,13 +10,14 @@ public class ContaLinkView extends AbstractView {
 		String numLink = request.getString("numLink").toString();
 		
 		System.out.println("Numero di link trovati alla pagina " + request.getString("URL") + " : " + numLink);
-
+		
+		
 	}
 
 	@Override
 	public void showOptions() {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
