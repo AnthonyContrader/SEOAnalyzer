@@ -7,7 +7,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class ContaImmagini {
-	public static Request conta(Request request){
+	public static void conta(Request request){
 		
 		Document doc = null;
 		try {
@@ -21,6 +21,5 @@ public class ContaImmagini {
 		for (Element immagine: immagini) img++;
 		//System.out.println("ci sono " + img + " immagini in questo sito!");
 		request.put("numero immagini", img);
-		return request;
 	}
 }

@@ -22,19 +22,19 @@ public class ContaImmaginiView extends AbstractView {
 
 	@Override
 	public void submit() {
-		switch(choice) {
+		/*switch(choice) {
 			case "1":
 				ContaParole.conta(request);
 				MainDispatcher.getInstance().callView("ContaParole", request);
 			case "2": 
 				MainDispatcher.getInstance().callView("HomeAdmin", request);
 			case "3": 
-				request = ContaImmagini.conta(request);
-				MainDispatcher.getInstance().callView("ContaImmagini", request);
+				ContaImmagini.conta(request);
+				MainDispatcher.getInstance().callView("ContaImmagini", "doControl", request);
 			case "4": 
 				MainDispatcher.getInstance().callView("HomeAdmin", request);
 			default: 
 				MainDispatcher.getInstance().callView("HomeAdmin", request);
-		}
+		}*/
 	}
 }

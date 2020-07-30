@@ -33,8 +33,8 @@ public class URLView extends AbstractView {
 				request = ContaLink.conta(request);
 				MainDispatcher.getInstance().callAction("ContaLink", "doControl", request);
 			case "3": 
-				request = ContaImmagini.conta(request);
-				MainDispatcher.getInstance().callView("ContaImmagini", request);
+				ContaImmagini.conta(request);
+				MainDispatcher.getInstance().callAction("ContaImmagini", "doControl", request);
 			case "4": 
 				MainDispatcher.getInstance().callView("HomeAdmin", request);
 			default: 
