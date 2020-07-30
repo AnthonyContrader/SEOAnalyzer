@@ -1,21 +1,36 @@
 package it.contrader.view;
 
+import java.util.Map;
+
 import it.contrader.controller.Request;
+import it.contrader.controller.ContaParole.Word;
 import it.contrader.main.MainDispatcher;
 
-public class ContaParoleView extends AbstractView {
-	private Request request;
-	private String choice;
+public class RicercaParolaView extends AbstractView {
+	Request request;
+	String choice;
 
 	@Override
 	public void showResults(Request request) {
 		this.request = request;
-		System.out.println("-------------CONTEGGIO PAROLE------------\n");
-		System.out.println("Il numero di parole all'interno del sito sono: \t" + request.getString("numeroParole") );
+
 	}
 
 	@Override
 	public void showOptions() {
+		Map<String, Word> countMap = (Map<String, Word>) request.get("mappaParoleOccorrenze");
+		if( countMap == null ) {
+			System.out.println("ATTENZIONE: devi prima contare le parole...");
+			MainDispatcher.getInstance().callAction("URL", "doControl", request);
+		}
+		String parola = (String) request.getString("cercaParola");
+		if( countMap.containsKey(parola) ) {
+			System.out.println("Parola trovata! Viene ripetuta " + countMap.get(parola).getCount() + " volte.");
+		}else {
+			System.out.println("ATTENZIONE: la parola non è presente all'interno del sito.");
+		}
+
+		
 	}
 
 	@Override
@@ -38,7 +53,6 @@ public class ContaParoleView extends AbstractView {
 				break;
 			}
 		}
-
 	}
 
 }
