@@ -1,9 +1,25 @@
 package it.contrader.controller;
 
-public class ContaParole {
+import java.io.IOException;
 
-	public static Request conta(Request request) {
-		request.put("numero parole", 3);
-		return request;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class ContaParole {
+	private long parole;
+	
+	
+	public static void conta(Request request) {
+		Document doc = null;
+		try {
+			String URL = (String) request.getString("URL");
+			doc = Jsoup.connect(URL).get();
+			String html = doc.title();
+			
+			request.put("contaParole", 3);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

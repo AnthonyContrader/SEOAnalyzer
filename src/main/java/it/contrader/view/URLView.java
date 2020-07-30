@@ -26,8 +26,9 @@ public class URLView extends AbstractView {
 	public void submit() {
 		switch(choice) {
 			case "1":
-				request = ContaParole.conta(request);
-				MainDispatcher.getInstance().callView("ContaParole", request);
+//				System.out.println("Dentro la classe URLView = " + request.get("URL"));
+				ContaParole.conta(request);
+				MainDispatcher.getInstance().callAction("ContaParole", "doControl", request);
 			case "2": 
 				MainDispatcher.getInstance().callView("HomeAdmin", request);
 			case "3": 
