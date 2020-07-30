@@ -13,7 +13,6 @@ public class ContaImmagini {
 		try {
 			doc = Jsoup.connect((String) request.getString("URL")).get();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		Elements immagini = doc.getElementsByTag("img");

@@ -9,32 +9,27 @@ public class ContaImmaginiView extends AbstractView {
 
 	@Override
 	public void showResults(Request request) {
-		System.out.println("ci sono " +  request.getString("numero immagini") + " immagini in questo sito!");
+		System.out.println("-------------CONTEGGIO IMMAGINI------------\n");
+		System.out.println("Ci sono " +  request.getString("numero immagini") + " immagini in questo sito!");
 	}
 
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
-		System.out.println("(1)Conta parole (2)Conta link (3)Conta immagini (4)Conta occorenze parole ");
+		System.out.println("(I)ndietro (E)sci");
 		choice = this.getInput();
-
 	}
 
 	@Override
 	public void submit() {
-		/*switch(choice) {
-			case "1":
-				ContaParole.conta(request);
-				MainDispatcher.getInstance().callView("ContaParole", request);
-			case "2": 
-				MainDispatcher.getInstance().callView("HomeAdmin", request);
-			case "3": 
-				ContaImmagini.conta(request);
-				MainDispatcher.getInstance().callView("ContaImmagini", "doControl", request);
-			case "4": 
-				MainDispatcher.getInstance().callView("HomeAdmin", request);
-			default: 
-				MainDispatcher.getInstance().callView("HomeAdmin", request);
-		}*/
+		switch(choice.toLowerCase()) {
+		case "i":
+			MainDispatcher.getInstance().callAction("URL", "doControl", request);
+		case "e":
+			System.out.println("Arrivederci!");
+			System.exit(0);
+		default:
+			System.out.println("Scelta errata. Riprovare!");
+	}
 	}
 }
