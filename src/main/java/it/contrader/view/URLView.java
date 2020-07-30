@@ -30,7 +30,7 @@ public class URLView extends AbstractView {
 				ContaParole.conta(request);
 				MainDispatcher.getInstance().callAction("ContaParole", "doControl", request);
 			case "2":
-				request = ContaLink.conta(request);
+				ContaLink.conta(request);
 				MainDispatcher.getInstance().callAction("ContaLink", "doControl", request);
 			case "3": 
 				ContaImmagini.conta(request);
