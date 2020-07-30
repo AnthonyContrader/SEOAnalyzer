@@ -17,7 +17,7 @@ public class HomeUserView extends AbstractView{
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
-		System.out.println("(I)nserisci URL (E)sci");
+		System.out.println("(I)nserisci URL (L)ogout (E)sci");
 		choice = this.getInput();
 
 	}
@@ -26,16 +26,22 @@ public class HomeUserView extends AbstractView{
 	public void submit() {
 
 		switch (choice.toLowerCase()) {
-
-		case "e":
+		
+		case "l":
 			MainDispatcher.getInstance().callAction("Init", "doControl", null);
 			break;
 		case "i":
 			URL = this.getInput();
 			request.put("URL", URL);
 			MainDispatcher.getInstance().callAction("URL", "doControl", request);
+			break;
+		case "e":
+			System.out.println("Arrivederci!");
+			System.exit(0);
 		default:
-			MainDispatcher.getInstance().callAction("Init", "doControl", null);
+			System.out.println("Scelta errata. Riprovare!");
+			MainDispatcher.getInstance().callAction("Home", "doControl", request);
+			break;
 		}
 	}
 
