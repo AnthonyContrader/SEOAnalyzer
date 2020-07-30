@@ -1,19 +1,17 @@
 package it.contrader.view;
-
 import it.contrader.controller.ContaImmagini;
 import it.contrader.controller.ContaParole;
 import it.contrader.controller.Request;
 import it.contrader.main.MainDispatcher;
 
-public class URLView extends AbstractView {
-	
-	private Request request;
-	private String choice;
+public class ContaImmaginiView extends AbstractView {
+	String choice;
+	String URL; 
+	Request request = new Request();
 
 	@Override
 	public void showResults(Request request) {
-		this.request = request;
-
+		System.out.println("ci sono " +  request.getString("numero immagini") + " immagini in questo sito!");
 	}
 
 	@Override
@@ -21,6 +19,7 @@ public class URLView extends AbstractView {
 		System.out.println("-------------MENU------------\n");
 		System.out.println("(1)Conta parole (2)Conta link (3)Conta immagini (4)Conta occorenze parole ");
 		choice = this.getInput();
+
 	}
 
 	@Override
@@ -40,5 +39,4 @@ public class URLView extends AbstractView {
 				MainDispatcher.getInstance().callView("HomeAdmin", request);
 		}
 	}
-
 }
