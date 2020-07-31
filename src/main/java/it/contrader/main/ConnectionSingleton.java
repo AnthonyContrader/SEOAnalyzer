@@ -61,7 +61,7 @@ public class ConnectionSingleton {
                 String jdbcAdditionalParams=properties.getProperty("db.jdbc_params");
                 
     			Class<?> c = Class.forName(driver);
-    			System.out.println("Ho caricato: " + c.getName());
+    			//System.out.println("Ho caricato: " + c.getName());
     			// compongo la stringa di connessione al database
                 String url = "jdbc:" + vendor + "://" + host + ":" + port + "/" + dbName+"?"+jdbcAdditionalParams;
                 // eseguo la connessione al database
