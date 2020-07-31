@@ -31,9 +31,7 @@ public class HomeUserView extends AbstractView{
 			MainDispatcher.getInstance().callAction("Init", "doControl", null);
 			break;
 		case "i":
-			URL = this.getInput();
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
+			MainDispatcher.getInstance().callAction("URL", "readCronologia", request);
 			break;
 		case "e":
 			System.out.println("Arrivederci!");

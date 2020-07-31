@@ -35,7 +35,6 @@ public class LoginDAO {
 			User user;
 			if(statement.executeQuery().next()) {
 				resultSet = statement.executeQuery();
-				System.out.println(resultSet);
 				resultSet.next();
 				id = resultSet.getInt("id");
 				usertype = resultSet.getString("usertype");
