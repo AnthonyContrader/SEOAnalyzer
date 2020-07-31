@@ -35,13 +35,11 @@ public class SceltaURLView extends AbstractView{
 		int temp = Integer.parseInt(choice);
 		if(temp>=1 && temp<=i-1)
 		{
-			System.out.println(temp + " " + i);
 			URL = (String) request.getString("URL"+ temp);
 			request.put("URL", URL);
 			MainDispatcher.getInstance().callAction("URL", "doControl", request);
 		}
 		else {
-			System.out.println("test");
 			URL = new String(choice);
 			boolean match = URL.matches(REGEX);
 			while( !match ) {
@@ -55,47 +53,6 @@ public class SceltaURLView extends AbstractView{
 			MainDispatcher.getInstance().callAction("URL", "doControl", request);
 		}
 		
-		/*switch (choice) {
-		
-		case "1":
-			URL = (String) request.getString("URL1");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "2":
-			URL = (String) request.getString("URL2");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "3":
-			URL = (String) request.getString("URL3");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "4":
-			URL = (String) request.getString("URL4");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "5":;
-			URL = (String) request.getString("URL5");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		default:
-			URL = new String(choice);
-			boolean match = URL.matches(REGEX);
-			while( !match ) {
-				System.out.println("ATTENZIONE! URL scritta in modo errato. Riprovare");
-				System.out.println("Versione corretta es: \"http://www.example.com/~joe\"");
-				URL = this.getInput();
-				match = URL.matches(REGEX);
-			}
-			
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		}*/
 	}
 
 }
