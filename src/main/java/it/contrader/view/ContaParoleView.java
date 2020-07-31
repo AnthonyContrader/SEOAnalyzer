@@ -10,8 +10,15 @@ public class ContaParoleView extends AbstractView {
 	@Override
 	public void showResults(Request request) {
 		this.request = request;
-		System.out.println("-------------CONTEGGIO PAROLE------------\n");
+		System.out.println("-------------INFORMAZIONI------------\n");
 		System.out.println("Il numero di parole all'interno del sito sono: \t" + request.getString("numeroParole") );
+		double affidabilitaArgomento = (double) request.get("affidabilitaArgomento");
+		String argomento = (String) request.getString("argomento");
+		if( argomento == null || affidabilitaArgomento == 0.0 ) {
+			System.out.println("ATTENZIONE: non è stato possibile individuare l'argomento trattato nel sito web.");
+		}else {
+			System.out.printf("L'argomento del sito è: %s con un'affidabilità del: %5.2f%% %n%n", argomento, affidabilitaArgomento );		
+		}
 	}
 
 	@Override
