@@ -53,5 +53,15 @@ public class URLController implements Controller {
 		MainDispatcher.getInstance().callView("SceltaURL", request);
 		//return cronologia;
 	}
+	
+	public void readAdmin(Request request)
+	{
+		List<String> adminList = urlService.readAdmin();
+		System.out.println(request);
+		request.put("adminlist", adminList);
+		System.out.println(request.get("adminlist"));
+		MainDispatcher.getInstance().callView("AdminURL", request);
+	
+	}
 
 }

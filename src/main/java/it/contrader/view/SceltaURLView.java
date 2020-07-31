@@ -9,15 +9,17 @@ public class SceltaURLView extends AbstractView{
 	String URL; 
 	Request request;
 	final String REGEX = "^(http|https|ftp)\\://[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*$";
-
+	int i;
 	@Override
 	public void showResults(Request request) {
 		//show la lista
 		System.out.println("-------------LISTA URL------------\n");
 		this.request = request;
-		for(int i=1; i<6; i++)
+		for(i=1; i<6; i++)
 		{
-			System.out.println(i + ") " + this.request.get("URL"+i));
+			if(this.request.get("URL"+i)!=null)
+				System.out.println(i + ") " + this.request.get("URL"+i));
+			else break;
 		}
 	}
 
@@ -30,35 +32,14 @@ public class SceltaURLView extends AbstractView{
 
 	@Override
 	public void submit() {
-
-		switch (choice) {
-		
-		case "1":
-			URL = (String) request.getString("URL1");
+		int temp = Integer.parseInt(choice);
+		if(temp>=1 && temp<=i-1)
+		{
+			URL = (String) request.getString("URL"+ temp);
 			request.put("URL", URL);
 			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "2":
-			URL = (String) request.getString("URL2");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "3":
-			URL = (String) request.getString("URL3");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "4":
-			URL = (String) request.getString("URL4");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		case "5":;
-			URL = (String) request.getString("URL5");
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
-		default:
+		}
+		else {
 			URL = new String(choice);
 			boolean match = URL.matches(REGEX);
 			while( !match ) {
@@ -70,8 +51,8 @@ public class SceltaURLView extends AbstractView{
 			
 			request.put("URL", URL);
 			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-			break;
 		}
+		
 	}
 
 }

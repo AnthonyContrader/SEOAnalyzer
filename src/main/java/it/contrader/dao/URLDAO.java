@@ -23,6 +23,7 @@ public class URLDAO {
 	//private final String QUERY_READ = "SELECT user.id, url.URLname FROM user INNER JOIN url ON user.id=url.UserID WHERE user.id = ?;";
 	private final String QUERY_READ = "SELECT user.id, url.URLname FROM user,url WHERE user.id=url.UserID AND user.id = ?;";
 	//private final String QUERY_ALL = "SELECT * FROM user";
+	private final String QUERY_READADMIN = "SELECT user.id, user.username, url.URLname FROM user,url WHERE user.id=url.UserID ;";
 
 	
 	public void insert (URL url) {
@@ -66,5 +67,23 @@ public class URLDAO {
 		Collections.reverse(urlsList);
 		
 		return urlsList;
+	}
+	
+	public List readAdmin() {
+		List<String> recordList = new ArrayList<String>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+			PreparedStatement statement = connection.prepareStatement(QUERY_READADMIN);
+			ResultSet resultSet = statement.executeQuery();
+			String temp = "";
+			while (resultSet.next()) {
+				String record = resultSet.getString("id") + "," + resultSet.getString("username") + "," + resultSet.getString("URLname");
+				recordList.add(record);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return recordList;
 	}
 }

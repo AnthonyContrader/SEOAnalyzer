@@ -43,4 +43,9 @@ public class URLService {
 		
 		urlDAO.insert(urlConverter.toEntity(dto));
 	}
+	
+	public List<String> readAdmin() {
+		// Ottiene un'entità e la restituisce convertendola in DTO
+		return urlDAO.readAdmin();
+	}
 }
