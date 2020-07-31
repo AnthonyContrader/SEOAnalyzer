@@ -18,7 +18,7 @@ public class URLView extends AbstractView {
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
-		System.out.println("(1)Conta parole (2)Conta link (3)Conta immagini (4)Cerca parola (5)Consigli di ottimizzazione (6)Logout (7)Esci");
+		System.out.println("(1)Conta parole (2)Conta link (3)Conta immagini (4)Cerca parola (5)Consigli di ottimizzazione (6)Ricerca nuovo URL (7)Logout (8)Esci");
 		choice = this.getInput();
 	}
 
@@ -48,8 +48,10 @@ public class URLView extends AbstractView {
 				MainDispatcher.getInstance().callAction("Ottimizzazione", "doControl", request);
 				break;
 			case "6":
-				MainDispatcher.getInstance().callAction("Init", "doControl", null);
+				MainDispatcher.getInstance().callAction("Home", "doControl", request);
 			case "7":
+				MainDispatcher.getInstance().callAction("Init", "doControl", null);
+			case "8":
 				System.out.println("Arrivederci!");
 				System.exit(0);
 			default: 

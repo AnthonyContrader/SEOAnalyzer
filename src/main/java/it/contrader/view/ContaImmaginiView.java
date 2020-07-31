@@ -22,14 +22,20 @@ public class ContaImmaginiView extends AbstractView {
 
 	@Override
 	public void submit() {
-		switch(choice.toLowerCase()) {
-		case "i":
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-		case "e":
-			System.out.println("Arrivederci!");
-			System.exit(0);
-		default:
-			System.out.println("Scelta errata. Riprovare!");
-	}
+		boolean finito = false;
+		while(!finito) {
+			switch(choice.toLowerCase()) {
+			case "i":
+				MainDispatcher.getInstance().callAction("URL", "doControl", request);
+				finito = true;
+				break;
+			case "e":
+				System.out.println("Arrivederci!");
+				System.exit(0);
+			default:
+				System.out.println("Scelta errata. Riprovare!");
+				break;
+			}
+		}
 	}
 }
