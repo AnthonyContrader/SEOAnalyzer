@@ -1,7 +1,6 @@
 package it.contrader.controller;
 
 import it.contrader.dto.URLDTO;
-import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.URLService;
 

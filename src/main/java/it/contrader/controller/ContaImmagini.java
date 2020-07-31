@@ -3,7 +3,6 @@ import java.io.IOException;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class ContaImmagini {
@@ -16,9 +15,6 @@ public class ContaImmagini {
 			e.printStackTrace();
 		}
 		Elements immagini = doc.getElementsByTag("img");
-		int img = 0;
-		for (Element immagine: immagini) img++;
-		//System.out.println("ci sono " + img + " immagini in questo sito!");
-		request.put("numero immagini", img);
+		request.put("numero immagini", immagini.size());
 	}
 }
