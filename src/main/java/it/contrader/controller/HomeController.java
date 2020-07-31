@@ -1,6 +1,7 @@
 package it.contrader.controller;
 
 import it.contrader.main.MainDispatcher;
+import it.contrader.model.User;
 import it.contrader.service.LoginService;
 
 public class HomeController implements Controller {
@@ -22,10 +23,14 @@ public class HomeController implements Controller {
 			
 			String username = request.get("username").toString();
 			String password = request.get("password").toString();
+			
 
 			// Qui invoca il Login Service
-			String usertype= loginService.login(username, password);
-
+			User user = new User();
+			user = loginService.login(username, password);
+			String usertype = user.getUsertype();
+			request.put("userID", user.getId());
+			//System.out.println(request.get("userID"));
 			// Reindirizza alla giusta view in base allo usertype
 			switch(usertype) {
 			

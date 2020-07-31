@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import it.contrader.main.ConnectionSingleton;
+import it.contrader.model.User;
 
 /**
  * 
@@ -18,7 +19,7 @@ public class LoginDAO {
 	private final String QUERY_LOGIN = "SELECT * FROM user WHERE username = ? AND password = ?";
 
 	
-	public String login (String username, String password) {
+	public User login (String username, String password) {
 
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
@@ -26,18 +27,22 @@ public class LoginDAO {
 			
 			statement.setString(1, username);
 			statement.setString(2, password);
-
+			
 			String usertype = null;
+			int id = 0;
 			
 			ResultSet resultSet;
-			
+			User user;
 			if(statement.executeQuery().next()) {
 				resultSet = statement.executeQuery();
+				System.out.println(resultSet);
 				resultSet.next();
+				id = resultSet.getInt("id");
 				usertype = resultSet.getString("usertype");
+				
 			}
-
-			return usertype;
+			user = new User(id, username, password, usertype);
+			return user;
 		}
 		
 		catch (SQLException e) {

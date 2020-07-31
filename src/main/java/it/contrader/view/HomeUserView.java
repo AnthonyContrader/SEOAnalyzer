@@ -8,10 +8,11 @@ public class HomeUserView extends AbstractView{
 
 	String choice;
 	String URL; 
-	Request request = new Request();
+	Request request;
 
 	@Override
 	public void showResults(Request request) {
+		this.request = request;
 	}
 
 	@Override
@@ -19,7 +20,6 @@ public class HomeUserView extends AbstractView{
 		System.out.println("-------------MENU------------\n");
 		System.out.println("(I)nserisci URL (L)ogout (E)sci");
 		choice = this.getInput();
-
 	}
 
 	@Override
