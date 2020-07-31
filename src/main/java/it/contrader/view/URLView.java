@@ -18,7 +18,7 @@ public class URLView extends AbstractView {
 	@Override
 	public void showOptions() {
 		System.out.println("-------------MENU------------\n");
-		System.out.println("(1)Conta parole (2)Conta link (3)Conta immagini (4)Conta occorenze parole ");
+		System.out.println("(1)Conta parole (2)Conta link (3)Conta immagini (4)Cerca parola (5)Consigli di ottimizzazione (6)Logout (7)Esci");
 		choice = this.getInput();
 	}
 
@@ -26,19 +26,35 @@ public class URLView extends AbstractView {
 	public void submit() {
 		switch(choice) {
 			case "1":
-//				System.out.println("Dentro la classe URLView = " + request.get("URL"));
 				ContaParole.conta(request);
 				MainDispatcher.getInstance().callAction("ContaParole", "doControl", request);
+				break;
 			case "2":
 				ContaLink.conta(request);
 				MainDispatcher.getInstance().callAction("ContaLink", "doControl", request);
+				break;
 			case "3": 
 				ContaImmagini.conta(request);
 				MainDispatcher.getInstance().callAction("ContaImmagini", "doControl", request);
+				break;
 			case "4": 
-				MainDispatcher.getInstance().callView("HomeAdmin", request);
+				System.out.println("Inserisci la parola da ricercare:");
+				String cercaParola = this.getInput();
+				request.put("cercaParola", cercaParola);
+				MainDispatcher.getInstance().callAction("RicercaParola", "doControl", request);
+				break;
+			case "5":
+				Ottimizzazione.ottimizza(request);
+				MainDispatcher.getInstance().callAction("Ottimizzazione", "doControl", request);
+				break;
+			case "6":
+				MainDispatcher.getInstance().callAction("Init", "doControl", null);
+			case "7":
+				System.out.println("Arrivederci!");
+				System.exit(0);
 			default: 
-				MainDispatcher.getInstance().callView("HomeAdmin", request);
+				System.out.println("Scelta errata. Riprovare!");
+				MainDispatcher.getInstance().callAction("URL", "doControl", request);
 		}
 	}
 
