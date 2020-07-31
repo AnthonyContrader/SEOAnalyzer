@@ -8,6 +8,7 @@ public class SceltaURLView extends AbstractView{
 	String choice;
 	String URL; 
 	Request request;
+	final String REGEX = "^(http|https|ftp)\\://[a-zA-Z0-9\\-\\.]+\\.[a-zA-Z]{2,3}(:[a-zA-Z0-9]*)?/?([a-zA-Z0-9\\-\\._\\?\\,\\'/\\\\\\+&amp;%\\$#\\=~])*$";
 
 	@Override
 	public void showResults(Request request) {
@@ -58,10 +59,20 @@ public class SceltaURLView extends AbstractView{
 			MainDispatcher.getInstance().callAction("URL", "doControl", request);
 			break;
 		default:
-			request.put("URL", choice);
+			URL = new String(choice);
+			boolean match = URL.matches(REGEX);
+			while( !match ) {
+				System.out.println("ATTENZIONE! URL scritta in modo errato. Riprovare");
+				System.out.println("Versione corretta es: \"http://www.example.com/~joe\"");
+				URL = this.getInput();
+				match = URL.matches(REGEX);
+			}
+			
+			request.put("URL", URL);
 			MainDispatcher.getInstance().callAction("URL", "doControl", request);
 			break;
 		}
 	}
 
 }
+
