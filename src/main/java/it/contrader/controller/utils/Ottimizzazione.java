@@ -1,4 +1,4 @@
-package it.contrader.controller;
+package it.contrader.controller.utils;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
@@ -25,10 +25,10 @@ public class Ottimizzazione {
 			int nParagrafiTot = 0;
 			int nParoleParagrafo = 0;
 			int nParagrafiMeno150parole = 0;
-			
+			BufferedReader reader = null;
 			for(Element elem : elements) {
 				nParagrafiTot++;
-				BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(elem.text().getBytes(StandardCharsets.UTF_8))));
+				reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(elem.text().getBytes(StandardCharsets.UTF_8))));
 				String line;
 				
 				while ((line = reader.readLine()) != null) {
@@ -55,10 +55,11 @@ public class Ottimizzazione {
 						}//switch	
 					}//for
 				}//while
-				reader.close();
+				
 				if( nParoleParagrafo < 150 ) nParagrafiMeno150parole++;
 				nParoleParagrafo = 0;
 			}
+			reader.close();
 			
 			double percentualeFrasiMeno25Parole = (nFrasiMeno25Parole * 100) / (double)nFrasiTot;
 			

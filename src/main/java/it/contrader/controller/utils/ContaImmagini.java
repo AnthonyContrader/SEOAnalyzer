@@ -1,4 +1,4 @@
-package it.contrader.controller;
+package it.contrader.controller.utils;
 import java.io.IOException;
 
 import org.jsoup.Jsoup;

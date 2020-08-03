@@ -2,8 +2,8 @@ package it.contrader.view;
 
 import java.util.Map;
 
-import it.contrader.controller.Request;
-import it.contrader.controller.ContaParole.Word;
+import it.contrader.controller.utils.Request;
+import it.contrader.controller.utils.ContaParole.Word;
 import it.contrader.main.MainDispatcher;
 
 public class RicercaParolaView extends AbstractView {

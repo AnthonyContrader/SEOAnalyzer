@@ -1,5 +1,7 @@
 package it.contrader.controller;
 
+import it.contrader.controller.utils.Request;
+
 /*
  * interfaccia Controller
  */

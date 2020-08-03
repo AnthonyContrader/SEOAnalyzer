@@ -2,6 +2,7 @@ package it.contrader.controller;
 
 import java.util.List;
 
+import it.contrader.controller.utils.Request;
 import it.contrader.dto.UserDTO;
 import it.contrader.main.MainDispatcher;
 import it.contrader.service.UserService;
@@ -139,6 +140,8 @@ public class UserController implements Controller {
 			case "B":
 				MainDispatcher.getInstance().callView("HomeAdmin", null);
 				break;
+				
+			
 				
 			default:
 				MainDispatcher.getInstance().callView("Login", null);

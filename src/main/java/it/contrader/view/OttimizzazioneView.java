@@ -1,6 +1,6 @@
 package it.contrader.view;
 
-import it.contrader.controller.Request;
+import it.contrader.controller.utils.Request;
 import it.contrader.main.MainDispatcher;
 
 public class OttimizzazioneView extends AbstractView {

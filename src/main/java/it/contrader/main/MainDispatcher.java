@@ -3,7 +3,7 @@ package it.contrader.main;
 
 import java.lang.reflect.Method;
 import it.contrader.controller.Controller;
-import it.contrader.controller.Request;
+import it.contrader.controller.utils.Request;
 import it.contrader.view.View;
 /*
  * La classe MainDispatcher si occupa di implementare il pattern MVC all'interno di questo progetto Java Console

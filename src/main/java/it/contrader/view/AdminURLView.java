@@ -2,8 +2,7 @@ package it.contrader.view;
 
 import java.util.List;
 
-import it.contrader.controller.Request;
-import it.contrader.dto.UserDTO;
+import it.contrader.controller.utils.Request;
 import it.contrader.main.MainDispatcher;
 
 
@@ -15,7 +14,6 @@ import it.contrader.main.MainDispatcher;
  */
 public class AdminURLView extends AbstractView {
 
-	private Request request;
 	private String choice;
 
 	public AdminURLView() {

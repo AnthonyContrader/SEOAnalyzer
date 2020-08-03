@@ -1,6 +1,6 @@
 package it.contrader.view;
 
-import it.contrader.controller.Request;
+import it.contrader.controller.utils.Request;
 
 /**
  * IMPORTANTE: Le View non invocano MAI i metodi dei controller, ma comunicano con questi tramite request 

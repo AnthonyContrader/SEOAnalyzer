@@ -1,4 +1,4 @@
-package it.contrader.controller;
+package it.contrader.controller.utils;
 
 import java.util.HashMap;
 import java.util.Map;

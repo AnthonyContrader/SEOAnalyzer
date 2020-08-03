@@ -1,5 +1,6 @@
 package it.contrader.controller;
 
+import it.contrader.controller.utils.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.model.User;
 import it.contrader.service.LoginService;

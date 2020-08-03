@@ -1,4 +1,4 @@
-package it.contrader.controller;
+package it.contrader.controller.utils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -7,6 +7,8 @@ import java.util.Map.Entry;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 public class ContaParole {
 
@@ -18,26 +20,33 @@ public class ContaParole {
 		try {
 			String URL = (String) request.getString("URL");
 			doc = Jsoup.connect(URL).get();
-			String text = doc.body().text();
+			Elements elements = doc.select("p");
+			//			String text = doc.body().text();
 			System.out.println("Scansione del sito...");
-			BufferedReader reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(text.getBytes(StandardCharsets.UTF_8))));
+
 			String line;
-			while ((line = reader.readLine()) != null) {
-				String[] words = line.split("[ ,.\":()/%£$&\\/()=?!|]+");
-				for (String word : words) {
-					if ("".equals(word)) {
-						continue;
+
+			BufferedReader reader = null;
+			for(Element elem : elements) {
+				reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(elem.text().getBytes(StandardCharsets.UTF_8))));
+				while ((line = reader.readLine()) != null) {
+					String[] words = line.split("[ ,.\":()/%£$&\\/()=?!|]+");
+					for (String word : words) {
+						if ("".equals(word)) {
+							continue;
+						}
+						Word wordObj = countMap.get(word);
+						if (wordObj == null) {
+							wordObj = new Word();
+							wordObj.word = word;
+							wordObj.count = 0;
+							countMap.put(word, wordObj);
+						}
+						contaParole++;
+						wordObj.count++;
 					}
-					Word wordObj = countMap.get(word);
-					if (wordObj == null) {
-						wordObj = new Word();
-						wordObj.word = word;
-						wordObj.count = 0;
-						countMap.put(word, wordObj);
-					}
-					contaParole++;
-					wordObj.count++;
 				}
+
 			}
 			reader.close();
 		}catch(IOException e) {
@@ -94,6 +103,7 @@ public class ContaParole {
 				add("mondiale"); add("europeo"); add("gara"); add("match"); add("set"); add("tempo"); add("campionato");
 				add("campionati"); add("serie"); add("uefa"); add("girone"); add("gironi"); add("classifica");
 				add("punti"); add("punto"); add("squadra"); add("squadre"); add("titolo"); add("titoli");
+				add("cestista"); add("nba"); add("professionista");
 			}
 		};
 
@@ -157,26 +167,21 @@ public class ContaParole {
 
 		public static void argomento(Request request) {
 			Map<String, Word> countMap = (Map<String, Word>) request.get("mappaParoleOccorrenze");
-			int numeroParole = (int) request.get("numeroParole");
 			int paroleTrovate = 0;
-			String argomentoTrovato = "";
+			int paroleMaxTrovate = 0;
+			String argomentoTrovato = null;
 			for( Entry<String,List<String>> coppiaArg : mappa.entrySet() ) {
 				for( String elem : countMap.keySet()) {
 					if( coppiaArg.getValue().contains(elem.toLowerCase()) ) paroleTrovate++;
-
-
 				}
-				if( paroleTrovate >= 15 ) {
+				if( paroleTrovate >= paroleMaxTrovate ) {
+					paroleMaxTrovate = paroleTrovate;
 					argomentoTrovato = coppiaArg.getKey();
-					double percentualeAffidabilitaArg = (paroleTrovate*100)/(double)numeroParole;
-					request.put("affidabilitaArgomento", percentualeAffidabilitaArg);
-					request.put("argomento", argomentoTrovato);
-					return;
 				}
 				paroleTrovate = 0;
 			}
-			request.put("affidabilitaArgomento", 0.0);
-			request.put("argomento", null);
+			System.out.println("Argomento in conta parole = " + argomentoTrovato);
+			request.put("argomento", argomentoTrovato);
 		}
 	}
 }

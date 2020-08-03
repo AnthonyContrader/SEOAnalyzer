@@ -2,6 +2,11 @@ package it.contrader.view;
 
 
 import it.contrader.controller.*;
+import it.contrader.controller.utils.ContaImmagini;
+import it.contrader.controller.utils.ContaLink;
+import it.contrader.controller.utils.ContaParole;
+import it.contrader.controller.utils.Ottimizzazione;
+import it.contrader.controller.utils.Request;
 import it.contrader.main.MainDispatcher;
 
 public class URLView extends AbstractView {

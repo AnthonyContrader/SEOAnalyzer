@@ -1,5 +1,6 @@
 package it.contrader.view;
 import it.contrader.controller.*;
+import it.contrader.controller.utils.Request;
 import it.contrader.main.MainDispatcher;
 
 public class ContaImmaginiView extends AbstractView {

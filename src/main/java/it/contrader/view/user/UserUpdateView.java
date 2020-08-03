@@ -1,7 +1,7 @@
 package it.contrader.view.user;
 
 
-import it.contrader.controller.Request;
+import it.contrader.controller.utils.Request;
 import it.contrader.main.MainDispatcher;
 import it.contrader.view.AbstractView;
 

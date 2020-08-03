@@ -1,6 +1,6 @@
 package it.contrader.view;
 
-import it.contrader.controller.Request;
+import it.contrader.controller.utils.Request;
 import it.contrader.main.MainDispatcher;
 
 public class SceltaURLView extends AbstractView{
@@ -32,14 +32,19 @@ public class SceltaURLView extends AbstractView{
 
 	@Override
 	public void submit() {
-		int temp = Integer.parseInt(choice);
-		if(temp>=1 && temp<=i-1)
-		{
-			URL = (String) request.getString("URL"+ temp);
-			request.put("URL", URL);
-			MainDispatcher.getInstance().callAction("URL", "doControl", request);
-		}
-		else {
+		
+		if( Character.isDigit(choice.charAt(0)) && choice.length()==1 ) {
+			int temp = Integer.parseInt(choice);
+			if(temp>=1 && temp<=i-1)
+			{
+				URL = (String) request.getString("URL"+ temp);
+				request.put("URL", URL);
+				MainDispatcher.getInstance().callAction("URL", "doControl", request);
+			}else {
+				System.out.println("ATTENZIONE: scelta del numero non corretta!");
+				MainDispatcher.getInstance().callAction("URL", "readCronologia", request);
+			}
+		}else {
 			URL = new String(choice);
 			boolean match = URL.matches(REGEX);
 			while( !match ) {
