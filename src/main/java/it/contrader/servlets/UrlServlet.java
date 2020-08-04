@@ -27,7 +27,6 @@ public class UrlServlet extends HttpServlet {
 
 		String url = request.getParameter("linkUrl").toString();
 		request.setAttribute("url", url);
-		System.out.println(request.getAttribute("url"));
 		getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 
 		//			switch (dto.getUsertype().toUpperCase()) {
