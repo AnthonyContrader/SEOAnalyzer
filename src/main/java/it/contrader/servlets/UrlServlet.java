@@ -25,29 +25,25 @@ public class UrlServlet extends HttpServlet {
 		final HttpSession session = request.getSession();
 		session.setAttribute("utente", null);
 
-		String mode = request.getParameter("mode");
+		String url = request.getParameter("linkUrl").toString();
+		request.setAttribute("url", url);
+		getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 
-		switch( mode.toUpperCase() ) {
-		case "INSERTURL":
-			String link = request.getParameter("linkUrl").toString();
-			break;
-		}
+		//			switch (dto.getUsertype().toUpperCase()) {
+		//			case "ADMIN":
+		//				//questo metodo reindirizza alla JSP tramite URL con una request e una response
+		//				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
+		//				break;
+		//				
+		//			case "USER":
+		//				getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
+		//				break;
+		//				
+		//			default:
+		//				//di default rimanda al login
+		//				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		//				break;
+		//			}
 
-			//			switch (dto.getUsertype().toUpperCase()) {
-			//			case "ADMIN":
-			//				//questo metodo reindirizza alla JSP tramite URL con una request e una response
-			//				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
-			//				break;
-			//				
-			//			case "USER":
-			//				getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
-			//				break;
-			//				
-			//			default:
-			//				//di default rimanda al login
-			//				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-			//				break;
-			//			}
-		
 	}
 }
