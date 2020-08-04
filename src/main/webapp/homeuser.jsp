@@ -9,29 +9,30 @@
 <link href="css/vittoriostyle.css" rel="stylesheet">
 </head>
 <body>
-<%@include file="css/header.jsp"%>
+	<%@include file="css/header.jsp"%>
 
 
-<div class="navbar">
-  <a class="active" href="homeuser.jsp">Home</a>
-  <a class="" href="">TODO</a>
-  <a href="LogoutServlet" id="logout">Logout</a>
-</div>
+	<div class="navbar">
+		<a class="active" href="homeuser.jsp">Home</a> 
+		<a class="" href="">TODO</a>
+		<a href="LogoutServlet" id="logout">Logout</a>
+	</div>
 
-<div class="main">
-<h1>Welcome ${user.getUsername()}</h1>
+	<div class="main">
+		<h1>Welcome ${user.getUsername()}</h1>
+		<form class="url" action="UrlServlet?mode=insertUrl" method="post">
 
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+			<label for="URL">URL</label> 
+			<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
+
+			<button type="submit" value="Conferma" name="pulsante">Conferma</button>
+			<button type="reset" value="Reset" name="pulsante">Reset</button>
+		</form>
+
+	</div>
 
 
-</div>
-
-
-<%@ include file="css/footer.jsp" %>
+	<%@ include file="css/footer.jsp"%>
 
 </body>
 </html>
