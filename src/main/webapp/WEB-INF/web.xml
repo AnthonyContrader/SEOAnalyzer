@@ -42,4 +42,14 @@
     <servlet-name>UrlServlet</servlet-name>
     <url-pattern>/UrlServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UrlSceltaServlet</display-name>
+    <servlet-name>UrlSceltaServlet</servlet-name>
+    <servlet-class>it.contrader.servlets.UrlSceltaServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UrlSceltaServlet</servlet-name>
+    <url-pattern>/UrlSceltaServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

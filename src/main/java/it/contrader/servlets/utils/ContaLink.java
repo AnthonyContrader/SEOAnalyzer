@@ -2,15 +2,17 @@ package it.contrader.servlets.utils;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
 public class ContaLink {
-	public static void conta(Request request) {
+	public static void conta(HttpServletRequest request) {
 	
-		
-		String URL = request.getString("URL").toString();
+		System.out.println(request.getAttribute("url").toString());
+		String URL = request.getAttribute("url").toString();
 		Document doc = null;
 		
 		try {
@@ -29,7 +31,7 @@ public class ContaLink {
 
 
 		
-		request.put("numLink", count);
+		request.setAttribute("numLink", count);
 			
 	}
 }

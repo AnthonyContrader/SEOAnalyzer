@@ -20,7 +20,7 @@
 
 	<div class="main">
 		<h1>Welcome ${user.getUsername()}</h1>
-		<form class="url" action="UrlServlet?mode=insertUrl" method="post">
+		<form class="url" action="UrlServlet" method="post">
 
 			<label for="URL">URL</label> 
 			<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
