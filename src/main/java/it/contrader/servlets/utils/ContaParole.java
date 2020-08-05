@@ -5,6 +5,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.Map.Entry;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,12 +15,12 @@ import org.jsoup.select.Elements;
 public class ContaParole {
 
 
-	public static void conta(Request request) {
+	public static void conta(HttpServletRequest request) {
 		Document doc = null;
 		Map<String, Word> countMap = new HashMap<String, Word>();
 		int contaParole = 0;
 		try {
-			String URL = (String) request.getString("URL");
+			String URL = (String) request.getAttribute("URL");
 			doc = Jsoup.connect(URL).get();
 			Elements elements = doc.select("p");
 			//			String text = doc.body().text();
@@ -66,8 +68,8 @@ public class ContaParole {
 
 		}
 
-		request.put("numeroParole", contaParole);
-		request.put("mappaParoleOccorrenze", countMap);
+		request.setAttribute("numeroParole", contaParole);
+		request.setAttribute("mappaParoleOccorrenze", countMap);
 
 		Argomenti.argomento(request);
 	}
@@ -165,8 +167,8 @@ public class ContaParole {
 		};
 
 
-		public static void argomento(Request request) {
-			Map<String, Word> countMap = (Map<String, Word>) request.get("mappaParoleOccorrenze");
+		public static void argomento(HttpServletRequest request) {
+			Map<String, Word> countMap = (Map<String, Word>) request.getAttribute("mappaParoleOccorrenze");
 			int paroleTrovate = 0;
 			int paroleMaxTrovate = 0;
 			String argomentoTrovato = null;
@@ -181,7 +183,7 @@ public class ContaParole {
 				paroleTrovate = 0;
 			}
 			System.out.println("Argomento in conta parole = " + argomentoTrovato);
-			request.put("argomento", argomentoTrovato);
+			request.setAttribute("argomento", argomentoTrovato);
 		}
 	}
 }
