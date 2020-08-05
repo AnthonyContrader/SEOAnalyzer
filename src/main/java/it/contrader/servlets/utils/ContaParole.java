@@ -17,10 +17,11 @@ public class ContaParole {
 
 	public static void conta(HttpServletRequest request) {
 		Document doc = null;
+		String URL = (String) request.getAttribute("url");
 		Map<String, Word> countMap = new HashMap<String, Word>();
 		int contaParole = 0;
 		try {
-			String URL = (String) request.getAttribute("URL");
+			
 			doc = Jsoup.connect(URL).get();
 			Elements elements = doc.select("p");
 			//			String text = doc.body().text();
@@ -56,20 +57,28 @@ public class ContaParole {
 		}
 		List<Word> list = new ArrayList<>(countMap.values());
 		Collections.sort(list);
+		List<String> stringList = new ArrayList<>();
 		int max = 0;
 		for(Word w: list) {
 			max++;
 			if( max > 10 )
 				break;
 			if( w.word.length() >= 8 )
-				System.out.println(max + ")\t\t" + w.word + "\t\t|" + w.count);
+			{
+				//System.out.println(max + ")\t\t" + w.word + "\t\t|" + w.count);
+				stringList.add(max + ")\t\t" + w.word + "\t\t|" + w.count);
+			}
 			else
-				System.out.println(max + ")\t\t" + w.word + "\t\t\t|" + w.count);
+			{
+				//System.out.println(max + ")\t\t" + w.word + "\t\t\t|" + w.count);
+				stringList.add(max + ")\t\t" + w.word + "\t\t\t|" + w.count);
+			}
 
 		}
 
 		request.setAttribute("numeroParole", contaParole);
 		request.setAttribute("mappaParoleOccorrenze", countMap);
+		request.setAttribute("listaParole", stringList);
 
 		Argomenti.argomento(request);
 	}
