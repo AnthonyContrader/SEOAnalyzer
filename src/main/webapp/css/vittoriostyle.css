@@ -24,7 +24,7 @@ div.text{
 	margin-bottom: 5%;
 	width: 90%;
 	font-size: 15px;
-	text-align: justify;
+	text-align: center
 }
 
 .footer {
@@ -41,16 +41,19 @@ div.text{
 	margin-bottom: 1%;
 }
 .div-left {
+	width: 400px;
 	float: left;
 	background-color: #f2f2f2;
 	text: #00a990;
-	//vertical-align: top;
+	display: inline-block;
+	margin: 0 auto;
+	text-align: center;
 }
 .div-right {
 	float: right;
 	background-color: #f2f2f2;
 	color: #00a990;
-	text-align: center;
+	//text-align: center;
 }
 
 /* headers */
@@ -217,7 +220,7 @@ res {
 }
 
 form {
-	width: 35%;
+	width: auto;
 	border-radius: 7px;
 	background-color: #f2f2f2;
 	padding: 20px;
