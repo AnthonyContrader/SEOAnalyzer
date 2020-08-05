@@ -40,6 +40,7 @@ public class UrlSceltaServlet extends HttpServlet {
 			
 			//String URL = request.getString("URL").toString();
 			String URL = request.getParameter("url").toString();
+			System.out.println("url = " + URL);
 			Document doc = null;
 			
 			try {

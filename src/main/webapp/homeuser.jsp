@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="java.util.List"
-	import="it.contrader.dto.UserDTO"%>
+	import="it.contrader.dto.URLDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,10 +24,37 @@
 
 			<label for="URL">URL</label> 
 			<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
+			
+			<!--  <a type="submit" href ="UrlServlet?linkUrl=https://www.google.it">https://www.google.it</a>-->
 
 			<button type="submit" value="Conferma" name="pulsante">Conferma</button>
 			<button type="reset" value="Reset" name="pulsante">Reset</button>
 		</form>
+		<table>
+			<tr>
+				<th class="intestazioneTabella">ULTIMI LINK VISITATI PER "${user.getUsername()}"</th>
+				
+			</tr>
+			<tr>
+				<th>Numero</th>
+				<th>Nome link</th>
+			</tr>
+			
+			
+			<%
+				List<URLDTO> listaCronologia = (List<URLDTO>) request.getAttribute("listaCronologia");
+				for(int i=0; i<listaCronologia.size() && i<5; i++ ){
+						String link = listaCronologia.get(i).getURLname();
+						out.println("<tr>");
+						out.println("<th>" + (i+1) + "</th>");
+						out.println("<th> <a type=\"submit\" href=\"UrlServlet?linkUrl=" + link + "\">" + link + "</a> </th>");
+						out.println("</tr>");
+					}
+			%>
+			
+			
+		</table>
+		
 
 	</div>
 

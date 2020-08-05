@@ -1,13 +1,18 @@
 package it.contrader.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import it.contrader.dto.URLDTO;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.LoginService;
+import it.contrader.service.URLService;
 
 
 /*
@@ -28,15 +33,20 @@ public class LoginServlet extends HttpServlet {
 		session.setAttribute("utente", null);
 
 		LoginService service = new LoginService();
-
+		URLService urlService = new URLService();
+		
 		if (request != null) {
 			String username = request.getParameter("username").toString();
 			String password = request.getParameter("password").toString();
+			
 			//come nei vecchi controller, invoca il service
 			UserDTO dto = service.login(username, password);
 			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione
 				session.setAttribute("user", dto);
+				int id = dto.getId();
+				List<URLDTO> dtoUrl = urlService.read(id);
+				request.setAttribute("listaCronologia", dtoUrl);				
 			}else {
 				//altrimenti torna alla pagina di login
 				session.setAttribute("errore", "true");
