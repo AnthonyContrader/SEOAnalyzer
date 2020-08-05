@@ -31,7 +31,7 @@
 
 	</div>
 	
-	<div>
+	<div class="results">
 	<% 
 	//conta parole
 	if(request.getAttribute("numeroParole")!=null)
