@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.text.DecimalFormat;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -62,12 +63,19 @@ public class Ottimizzazione {
 				nParoleParagrafo = 0;
 			}
 			reader.close();
+			DecimalFormat df = new DecimalFormat("#.##");      
 			
+
 			double percentualeFrasiMeno25Parole = (nFrasiMeno25Parole * 100) / (double)nFrasiTot;
-			
+			//percentualeFrasiMeno25Parole = Double.valueOf(df.format(percentualeFrasiMeno25Parole));
+			percentualeFrasiMeno25Parole = Math.round(percentualeFrasiMeno25Parole*100);
+			percentualeFrasiMeno25Parole/= 100;
 			double percentualeFrasiMeno8Parole = (nFrasiMeno8Parole * 100) / (double)nFrasiTot;
-			
+			percentualeFrasiMeno8Parole = Math.round(percentualeFrasiMeno8Parole*100);
+			percentualeFrasiMeno8Parole/= 100;
 			double percentualeParagrafiMeno150Parole = (nParagrafiMeno150parole * 100) / (double)nParagrafiTot;
+			percentualeParagrafiMeno150Parole = Math.round(percentualeParagrafiMeno150Parole*100);
+			percentualeParagrafiMeno150Parole/=100;
 			
 			request.setAttribute("percentualeFrasiMeno25Parole", percentualeFrasiMeno25Parole);
 			request.setAttribute("percentualeFrasiMeno8Parole", percentualeFrasiMeno8Parole);
