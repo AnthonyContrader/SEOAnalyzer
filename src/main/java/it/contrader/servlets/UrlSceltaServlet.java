@@ -11,7 +11,10 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
+import it.contrader.servlets.utils.ContaImmagini;
 import it.contrader.servlets.utils.ContaLink;
+import it.contrader.servlets.utils.ContaParole;
+import it.contrader.servlets.utils.Ottimizzazione;
 
 /**
  * Servlet implementation class UrlSceltaServlet
@@ -25,35 +28,18 @@ public class UrlSceltaServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
 		String choice = request.getParameter("scelta");
-		
+		request.setAttribute("url", session.getAttribute("url").toString());
 		switch( choice ) {
 		case "parole":
-			//TODO
+			ContaParole.conta(request);
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "immagini":
-			//TODO
+			ContaImmagini.conta(request);
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "link":
-			//TODO
-			
-			//String URL = request.getString("URL").toString();
-			String URL = request.getParameter("url").toString();
-			System.out.println("url = " + URL);
-			Document doc = null;
-			
-			try {
-				doc = Jsoup.connect(URL).get();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Elements links = doc.select("a[href]");
-			int count = links.size();
-			request.setAttribute("numLink", count);
-			//System.out.println("url = ");
-			//ContaLink.conta(request);
+			ContaLink.conta(request);
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "parola":
@@ -61,7 +47,7 @@ public class UrlSceltaServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "ottimizza":
-			//TODO
+			Ottimizzazione.ottimizza(request);
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		}
