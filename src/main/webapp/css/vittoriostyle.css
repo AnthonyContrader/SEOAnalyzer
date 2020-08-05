@@ -40,6 +40,11 @@ div.text{
 	margin-top: 5%;
 	margin-bottom: 1%;
 }
+.results {
+	float: right;
+	background-color: #f2f2f2;
+	text: #00a990;
+}
 
 /* headers */
 h1 {
@@ -47,7 +52,7 @@ h1 {
 	text-align: center;
 	size: 300%;
 	font-family: sans-serif;
-	color: #000000;
+	color: #00a990;
 }
 
 h2 {

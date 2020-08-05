@@ -10,13 +10,14 @@ import org.jsoup.select.Elements;
 public class ContaImmagini {
 	public static void conta(HttpServletRequest request){
 		
+		String URL = request.getAttribute("url").toString();
 		Document doc = null;
 		try {
-			doc = Jsoup.connect((String) request.getAttribute("URL")).get();
+			doc = Jsoup.connect(URL).get();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		Elements immagini = doc.getElementsByTag("img");
-		request.setAttribute("numero immagini", immagini.size());
+		request.setAttribute("numImg", immagini.size());
 	}
 }
