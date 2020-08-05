@@ -6,17 +6,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Ottimizzazione {
-	public static void ottimizza(Request request) {
+	public static void ottimizza(HttpServletRequest request) {
 		Document doc = null;
 		try {
-			//TODO: manca l'url. Grazie prego ciao
-			doc = Jsoup.connect().get();
+			String url = request.getAttribute("url").toString();
+			doc = Jsoup.connect(url).get();
 			Elements elements = doc.select("p");
 			int paroleFrase = 0;
 			int nFrasiMeno25Parole = 0;
@@ -67,9 +69,9 @@ public class Ottimizzazione {
 			
 			double percentualeParagrafiMeno150Parole = (nParagrafiMeno150parole * 100) / (double)nParagrafiTot;
 			
-			request.put("percentualeFrasiMeno25Parole", percentualeFrasiMeno25Parole);
-			request.put("percentualeFrasiMeno8Parole", percentualeFrasiMeno8Parole);
-			request.put("percentualeParagrafiMeno150Parole", percentualeParagrafiMeno150Parole);
+			request.setAttribute("percentualeFrasiMeno25Parole", percentualeFrasiMeno25Parole);
+			request.setAttribute("percentualeFrasiMeno8Parole", percentualeFrasiMeno8Parole);
+			request.setAttribute("percentualeParagrafiMeno150Parole", percentualeParagrafiMeno150Parole);
 
 		}catch(IOException e) {
 			e.printStackTrace();
