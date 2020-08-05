@@ -25,7 +25,6 @@ public class UrlSceltaServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
 		String choice = request.getParameter("scelta");
-		
 		switch( choice ) {
 		case "parole":
 			//TODO
