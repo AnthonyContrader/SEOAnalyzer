@@ -20,42 +20,44 @@
 
 	<div class="main">
 		<h1>Welcome ${user.getUsername()}</h1>
-		<form class="url" action="UrlServlet" method="post">
-
-			<label for="URL">URL</label> 
-			<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
-			
-			<!--  <a type="submit" href ="UrlServlet?linkUrl=https://www.google.it">https://www.google.it</a>-->
-
-			<button type="submit" value="Conferma" name="pulsante">Conferma</button>
-			<button type="reset" value="Reset" name="pulsante">Reset</button>
-		</form>
-		<table>
-			<tr>
-				<th class="intestazioneTabella">ULTIMI LINK VISITATI PER "${user.getUsername()}"</th>
+		<div class="div-left">
+			<form class="url" action="UrlServlet" method="post">
+	
+				<label for="URL">URL</label> 
+				<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
 				
-			</tr>
-			<tr>
-				<th>Numero</th>
-				<th>Nome link</th>
-			</tr>
-			
-			
-			<%
-				List<URLDTO> listaCronologia = (List<URLDTO>) request.getAttribute("listaCronologia");
-				for(int i=0; i<listaCronologia.size() && i<5; i++ ){
-						String link = listaCronologia.get(i).getURLname();
-						out.println("<tr>");
-						out.println("<th>" + (i+1) + "</th>");
-						out.println("<th> <a type=\"submit\" href=\"UrlServlet?linkUrl=" + link + "\">" + link + "</a> </th>");
-						out.println("</tr>");
-					}
-			%>
-			
-			
-		</table>
-		
-
+				<!--  <a type="submit" href ="UrlServlet?linkUrl=https://www.google.it">https://www.google.it</a>-->
+	
+				<button type="submit" value="Conferma" name="pulsante">Conferma</button>
+				<button type="reset" value="Reset" name="pulsante">Reset</button>
+			</form>
+		</div>
+		<div class="div-right">
+			<table>
+				<tr>
+					<th class="intestazioneTabella">ULTIMI LINK VISITATI PER "${user.getUsername()}"</th>
+					
+				</tr>
+				<tr>
+					<th>Numero</th>
+					<th>Nome link</th>
+				</tr>
+				
+				
+				<%
+					List<URLDTO> listaCronologia = (List<URLDTO>) request.getAttribute("listaCronologia");
+					for(int i=0; i<listaCronologia.size() && i<5; i++ ){
+							String link = listaCronologia.get(i).getURLname();
+							out.println("<tr>");
+							out.println("<th>" + (i+1) + "</th>");
+							out.println("<th> <a type=\"submit\" href=\"UrlServlet?linkUrl=" + link + "\">" + link + "</a> </th>");
+							out.println("</tr>");
+						}
+				%>
+				
+				
+			</table>
+		</div>
 	</div>
 
 
