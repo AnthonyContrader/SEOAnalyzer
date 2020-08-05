@@ -43,7 +43,15 @@ public class UrlSceltaServlet extends HttpServlet {
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "parola":
-			//TODO
+			if(request.getParameter("test")!=null)
+			{
+				//todo
+				request.setAttribute("cerca", request.getParameter("cercaparola").toString());
+				ContaParole.cerca(request);
+				System.out.println(request.getAttribute("trovata"));
+			}
+			request.setAttribute("parolaTest", "yes");
+			System.out.println("si");
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "ottimizza":

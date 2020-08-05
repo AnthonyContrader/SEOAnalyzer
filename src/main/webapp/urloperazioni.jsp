@@ -74,6 +74,21 @@
 		request.setAttribute("percentualeFrasiMeno8Parole",null);
 		request.setAttribute("percentualeParagrafiMeno150Parole",null);
 	}
+	if(request.getAttribute("parolaTest")!=null)
+	{
+		out.println("<div class=\"parola\">");
+		out.println("<h1>Inserisci la parola da cercare: </h1>");
+		out.println("<form class=\"cerca\" action=\"UrlSceltaServlet?test=yes\" method=\"post\">");
+		out.println("<input type=\"text\" id=\"cercaparola\" name=\"cercaparola\" placeholder=\"Inserisci parola\">");
+		out.println("<button type=\"submit\" name=\"scelta\" value=\"parola\"> Cerca parola</button>");
+		out.println("</form>");
+		out.println("</div>");
+		
+		if(request.getAttribute("trovata")!=null)
+		{
+			out.println("<p>La parola " + request.getAttribute("cerca").toString() + "  è stata trovata: " + request.getAttribute("trovata").toString() + " volte!</p>");
+		}
+	}
 	%>
 	</div>
 	
