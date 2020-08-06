@@ -27,11 +27,9 @@ public class URLDAO {
 	
 	public void insert (URL url) {
 
-
 		Connection connection = ConnectionSingleton.getInstance();
 		try {
 			PreparedStatement statement = connection.prepareStatement(QUERY_INSERT);
-			
 			statement.setString(1, url.getURLname());
 			statement.setInt(2, url.getUserID());
 			
