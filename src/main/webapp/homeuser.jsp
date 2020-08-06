@@ -26,7 +26,14 @@
 				<label for="URL">URL</label> 
 				<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
 				
-				<!--  <a type="submit" href ="UrlServlet?linkUrl=https://www.google.it">https://www.google.it</a>-->
+				<input 
+					type="text"
+					id="url" name="linkUrl"
+					placeholder="Inserisci url" 
+			    		pattern="https?://.+"
+			    		title="L'indirizzo deve iniziare con https oppure con http"
+			    		required
+				>
 	
 				<button type="submit" value="Conferma" name="pulsante">Conferma</button>
 				<button type="reset" value="Reset" name="pulsante">Reset</button>
