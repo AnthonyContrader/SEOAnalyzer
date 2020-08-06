@@ -19,7 +19,7 @@
 	</div>
 
 	<div class="main">
-		<h1>Welcome ${user.getUsername()}</h1>
+		<h1>Welcome ${utente.getUsername()}</h1>
 		<div class="div-left">
 			<form class="url" action="UrlServlet" method="post">
 	
@@ -40,7 +40,7 @@
 		<div class="div-right">
 			<table>
 				<tr>
-					<th class="intestazioneTabella">ULTIMI LINK VISITATI PER "${user.getUsername()}"</th>
+					<th class="intestazioneTabella">ULTIMI LINK VISITATI PER "${utente.getUsername()}"</th>
 					
 				</tr>
 				<tr>
