@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="main">
-		<h1>Welcome ${utente.getUsername()}</h1>
+		<h1>Benvenuto ${utente.getUsername()}</h1>
 		<div class="div-left">
 			<form class="url" action="UrlServlet?mode=link" method="post">
 				<label for="URL">URL</label> 
@@ -38,13 +38,12 @@
 		<div class="div-right">
 			<table>
 				<tr>
-					<th class="intestazioneTabella">ULTIMI LINK VISITATI PER
-						"${utente.getUsername()}"</th>
+					<th class="intestazioneTabella" colspan="3">ULTIMI URL VISITATI</th>
 
 				</tr>
 				<tr>
-					<th>Numero</th>
-					<th>Nome link</th>
+					<th>#</th>
+					<th>URL</th>
 				</tr>
 
 
