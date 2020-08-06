@@ -9,11 +9,12 @@
 </head>
 <body>
 
-<div class="alert"
+<div class="alert-url"
 	 style="display:${urlErrato?'block':'none'}">
 	  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 	  
 	  Attenzione! Indirizzo URL inesistente!
+	  
 </div>
 
 <div class="header">SEO Analyzer</div>

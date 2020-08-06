@@ -3,17 +3,18 @@
 <html>
 <head>
 <link href="css/vittoriostyle.css" rel="stylesheet">
+<link href="css/alert.css" rel="stylesheet">
 
 <title>Login SAMPLE</title>
 </head>
 <body>
-	<% 
-	if(session.getAttribute("errore")!=null && session.getAttribute("errore").toString()=="true")
-	{
-			session.setAttribute("errore", "false");
-			out.println("<p><div class=\"errore\"><label for='Errore'> Errore nel Login </label></div></p>");
-	}
-	%>
+	<div class="alert-login"
+	 	 style="display:${loginErrato?'block':'none'}">
+	<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+	  
+	  Attenzione! Dati errati!
+	  
+	</div>
 		<form class="login" action="LoginServlet" method="post">
 
 				<label for="user">Username: </label>
