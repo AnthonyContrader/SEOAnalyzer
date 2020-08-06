@@ -11,7 +11,7 @@
 	if(session.getAttribute("errore")!=null && session.getAttribute("errore").toString()=="true")
 	{
 			session.setAttribute("errore", "false");
-			out.println("<p><div><label for='Errore'> Errore nel Login </label></div></p>");
+			out.println("<p><div class=\"errore\"><label for='Errore'> Errore nel Login </label></div></p>");
 	}
 	%>
 		<form class="login" action="LoginServlet" method="post">
