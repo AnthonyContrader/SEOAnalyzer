@@ -74,7 +74,6 @@ public class URLDAO {
 		try {
 			PreparedStatement statement = connection.prepareStatement(QUERY_READADMIN);
 			ResultSet resultSet = statement.executeQuery();
-			String temp = "";
 			while (resultSet.next()) {
 				String record = resultSet.getString("id") + "," + resultSet.getString("username") + "," + resultSet.getString("URLname");
 				recordList.add(record);

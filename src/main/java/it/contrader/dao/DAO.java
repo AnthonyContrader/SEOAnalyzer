@@ -13,4 +13,6 @@ public interface DAO<DTO> {
 	public boolean update(DTO dto);
 	
 	public boolean delete(int id);
+	
+	public List<String> readAdmin();
 }
