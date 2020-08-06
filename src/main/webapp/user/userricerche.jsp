@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="it.contrader.dto.UserDTO"%>
+    pageEncoding="ISO-8859-1" import="it.contrader.dto.UserDTO" import="java.util.List" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,6 @@
 <br>
 
 <div class="main">
-<%UserDTO u = (UserDTO) request.getAttribute("dto");%>
 
 
 <table>
@@ -27,11 +26,20 @@
 		<th>Username</th>
 		<th>URL</th>
 	</tr>
-	<tr>
-		<td>1</td>
-		<td> Mario</td>
-		<td> www.ciao.com</td>
-	</tr>	
+	<% 
+	int i = 0;
+	List<String> l = (List<String>)request.getAttribute("ricerche");
+	//System.out.println(request.getAttribute("ricerche").toString());
+	for(String s: l)
+		{
+		String[] temp = s.split(",");
+		out.println("<tr>");
+		out.println("<td>" + temp[0] + "</td>");
+		out.println("<td>" + temp[1] + "</td>");
+		out.println("<td>" + temp[2] + "</td>");
+		out.println("</tr>");
+		}
+	%>
 </table>
 
 <br>

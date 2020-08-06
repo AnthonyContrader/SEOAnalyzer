@@ -22,4 +22,5 @@ public interface Service<DTO> {
 	
 	public boolean delete(int id);
 
+	public List<String> readAdmin();
 }

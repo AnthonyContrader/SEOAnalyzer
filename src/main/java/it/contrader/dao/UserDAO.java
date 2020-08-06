@@ -20,6 +20,7 @@ public class UserDAO implements DAO<User> {
 	private final String QUERY_READ = "SELECT * FROM user WHERE id=?";
 	private final String QUERY_UPDATE = "UPDATE user SET username=?, password=?, usertype=? WHERE id=?";
 	private final String QUERY_DELETE = "DELETE FROM user WHERE id=?";
+	private final String QUERY_READADMIN = "SELECT user.id, user.username, url.URLname FROM user,url WHERE user.id=url.UserID";
 
 	public UserDAO() {
 
@@ -144,5 +145,21 @@ public class UserDAO implements DAO<User> {
 		return false;
 	}
 
+	public List<String> readAdmin() {
+		List<String> recordList = new ArrayList<String>();
+		Connection connection = ConnectionSingleton.getInstance();
+		try {
+		PreparedStatement statement = connection.prepareStatement(QUERY_READADMIN);
+		ResultSet resultSet = statement.executeQuery();
+		while (resultSet.next()) {
+		String record = resultSet.getString("id") + "," + resultSet.getString("username") + "," + resultSet.getString("URLname");
+		recordList.add(record);
+		}
+		} catch (SQLException e) {
+		e.printStackTrace();
+		}
 
+		return recordList;
+		}
+		
 }
