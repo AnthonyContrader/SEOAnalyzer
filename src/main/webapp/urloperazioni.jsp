@@ -13,8 +13,7 @@ import="it.contrader.dto.UserDTO"%>
 
 
 <div class="navbar">
-<a class="active" href="homeuser.jsp">Home</a>
-<a class="" href="">TODO</a>
+<a class="active" href="UrlServlet?mode=home">Home</a> 
 <a href="LogoutServlet" id="logout">Logout</a>
 </div>
 

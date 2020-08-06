@@ -46,7 +46,8 @@ public class LoginServlet extends HttpServlet {
 				session.setAttribute("utente", dto);
 				int id = dto.getId();
 				List<URLDTO> dtoUrl = urlService.read(id);
-				request.setAttribute("listaCronologia", dtoUrl);				
+				session.setAttribute("listaCronologia", dtoUrl);	
+				session.setAttribute("id", id);
 			}else {
 				//altrimenti torna alla pagina di login
 				session.setAttribute("errore", "true");

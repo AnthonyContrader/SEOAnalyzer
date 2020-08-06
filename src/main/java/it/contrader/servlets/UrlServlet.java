@@ -1,6 +1,8 @@
 package it.contrader.servlets;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,33 +31,36 @@ public class UrlServlet extends HttpServlet {
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
 		UserDTO utente = (UserDTO)session.getAttribute("utente");
-		String linkUrl = request.getParameter("linkUrl").toString();
+		String mode = request.getParameter("mode");
+		URLService urlService = new URLService(); 
 		
-		URLConverter converter = new URLConverter();
-		URLService urlService = new URLService();
-		
-		session.setAttribute("url", linkUrl);
-		URL URL = new URL((String)session.getAttribute("url"), utente.getId());
-		URLDTO urldto = converter.toDTO(URL);
-		urlService.insert(urldto);
+		switch (mode.toLowerCase()) {
+		case "link":
 
-		getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
+			String linkUrl = request.getParameter("linkUrl").toString();
 
-		//			switch (dto.getUsertype().toUpperCase()) {
-		//			case "ADMIN":
-		//				//questo metodo reindirizza alla JSP tramite URL con una request e una response
-		//				getServletContext().getRequestDispatcher("/homeadmin.jsp").forward(request, response);
-		//				break;
-		//				
-		//			case "USER":
-		//				getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
-		//				break;
-		//				
-		//			default:
-		//				//di default rimanda al login
-		//				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-		//				break;
-		//			}
+			URLConverter converter = new URLConverter();
+
+			session.setAttribute("url", linkUrl);
+			URL URL = new URL((String)session.getAttribute("url"), utente.getId());
+			URLDTO urldto = converter.toDTO(URL);
+			urlService.insert(urldto);
+
+			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
+			break;
+
+		case "home":
+			int id = (int)session.getAttribute("id");
+			List<URLDTO> dtoUrl = urlService.read(id);
+			session.setAttribute("listaCronologia", dtoUrl);
+			getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
+			break;
+
+		default:
+			//di default rimanda al login
+			//			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			//			break;
+		}
 
 	}
 }
