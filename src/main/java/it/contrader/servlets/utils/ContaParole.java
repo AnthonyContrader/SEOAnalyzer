@@ -82,6 +82,43 @@ public class ContaParole {
 
 		Argomenti.argomento(request);
 	}
+	
+	public static void cerca(HttpServletRequest request)
+	{
+		Document doc = null;
+		String cerca = request.getParameter("cercaparola").toString();
+		String URL = (String) request.getAttribute("url");
+		int count = 0;
+		try {
+			
+			doc = Jsoup.connect(URL).get();
+			Elements elements = doc.select("p");
+			//			String text = doc.body().text();
+
+			String line;
+
+			BufferedReader reader = null;
+			for(Element elem : elements) {
+				reader = new BufferedReader(new InputStreamReader(new ByteArrayInputStream(elem.text().getBytes(StandardCharsets.UTF_8))));
+				while ((line = reader.readLine()) != null) {
+					String[] words = line.split("[ ,.\":()/%£$&\\/()=?!|]+");
+					for (String word : words) {
+						if ("".equals(word)) {
+							continue;
+						}
+						if(word.toLowerCase().equals(cerca.toLowerCase()))
+						count++;
+					}
+				}
+
+			}
+			reader.close();
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("trovata", count);
+	}
 	public static class Word implements Comparable<Word> {
 		private String word;
 		private int count;

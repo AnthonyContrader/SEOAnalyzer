@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link href="../css/vittoriostyle.css" rel="stylesheet">
-<title>Read User</title>
+<title>Ricerche Utenti</title>
 </head>
 <body>
 <%@ include file="../css/header.jsp" %>
@@ -23,14 +23,14 @@
 
 <table>
 	<tr> 
+		<th>ID utente</th>
 		<th>Username</th>
-		<th>Password</th>
-		<th>Usertype</th>
+		<th>URL</th>
 	</tr>
 	<tr>
-		<td><%=u.getUsername()%></td>
-		<td> <%=u.getPassword()%></td>
-		<td> <%=u.getUsertype()%></td>
+		<td>1</td>
+		<td> Mario</td>
+		<td> www.ciao.com</td>
 	</tr>	
 </table>
 

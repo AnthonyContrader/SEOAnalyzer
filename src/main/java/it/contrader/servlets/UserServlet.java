@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.contrader.dto.UserDTO;
 import it.contrader.service.Service;
+import it.contrader.service.URLService;
 import it.contrader.service.UserService;
 
 /*
@@ -85,6 +86,10 @@ public class UserServlet extends HttpServlet {
 			request.setAttribute("ans", ans);
 			updateList(request);
 			getServletContext().getRequestDispatcher("/user/usermanager.jsp").forward(request, response);
+			break;
+		case "RICERCHE":
+			//List<String> l = URLService.readAdmin();
+			getServletContext().getRequestDispatcher("/user/userricerche.jsp").forward(request, response);
 			break;
 		}
 	}
