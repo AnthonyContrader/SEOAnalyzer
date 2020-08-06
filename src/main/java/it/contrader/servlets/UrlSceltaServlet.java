@@ -19,8 +19,9 @@ public class UrlSceltaServlet extends HttpServlet {
      * @see HttpServlet#HttpServlet()
      */
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		final HttpSession session = request.getSession();
 		String choice = request.getParameter("scelta");
-		
+		request.setAttribute("url", session.getAttribute("url").toString());
 		switch( choice ) {
 		case "parole":
 			ContaParole.conta(request);
@@ -39,6 +40,7 @@ public class UrlSceltaServlet extends HttpServlet {
 			{
 				//todo
 				request.setAttribute("cerca", request.getParameter("cercaparola").toString());
+				System.out.println(request.getAttribute("url").toString());
 				ContaParole.cerca(request);
 				System.out.println(request.getAttribute("trovata"));
 			}

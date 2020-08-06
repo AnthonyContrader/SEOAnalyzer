@@ -90,7 +90,6 @@ public class UserServlet extends HttpServlet {
 		case "RICERCHE":
 			List<String> l = service.readAdmin();
 			request.setAttribute("ricerche", l);
-			System.out.println(l);
 			getServletContext().getRequestDispatcher("/user/userricerche.jsp").forward(request, response);
 			break;
 		}

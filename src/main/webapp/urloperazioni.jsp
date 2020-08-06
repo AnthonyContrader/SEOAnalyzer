@@ -16,7 +16,6 @@ import="it.contrader.dto.UserDTO"%>
 <a class="active" href="UrlServlet?mode=home">Home</a> 
 <a href="LogoutServlet" id="logout">Logout</a>
 </div>
-
 <div class="main">
 <h1>Il tuo sito: ${url}</h1>
 	<div class="div-left">

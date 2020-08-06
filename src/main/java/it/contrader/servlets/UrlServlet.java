@@ -45,7 +45,7 @@ public class UrlServlet extends HttpServlet {
 			URL URL = new URL((String)session.getAttribute("url"), utente.getId());
 			URLDTO urldto = converter.toDTO(URL);
 			urlService.insert(urldto);
-
+			
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 
