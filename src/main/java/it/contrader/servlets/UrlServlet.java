@@ -7,6 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.contrader.converter.URLConverter;
+import it.contrader.dto.*;
+import it.contrader.model.*; 
+import it.contrader.service.URLService;
+
 
 /*
  * Login Servlet
@@ -23,10 +28,17 @@ public class UrlServlet extends HttpServlet {
 	 */
 	public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		final HttpSession session = request.getSession();
-		session.setAttribute("utente", null);
+		UserDTO utente = (UserDTO)session.getAttribute("utente");
+		String linkUrl = request.getParameter("linkUrl").toString();
+		
+		URLConverter converter = new URLConverter();
+		URLService urlService = new URLService();
+		
+		session.setAttribute("url", linkUrl);
+		URL URL = new URL((String)session.getAttribute("url"), utente.getId());
+		URLDTO urldto = converter.toDTO(URL);
+		urlService.insert(urldto);
 
-		String url = request.getParameter("linkUrl").toString();
-		session.setAttribute("url", url);
 		getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 
 		//			switch (dto.getUsertype().toUpperCase()) {

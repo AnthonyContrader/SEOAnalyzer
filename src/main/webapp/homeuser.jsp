@@ -19,20 +19,24 @@
 	</div>
 
 	<div class="main">
-		<h1>Welcome ${user.getUsername()}</h1>
+		<h1>Welcome ${utente.getUsername()}</h1>
 		<form class="url" action="UrlServlet" method="post">
 
 			<label for="URL">URL</label> 
-			<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
+			<input 
+				type="text"
+				id="url" name="linkUrl"
+				placeholder="Inserisci url" 
+			    pattern="https?://.+"
+			    title="L'indirizzo deve iniziare con https oppure con http"
+			    required>
 			
-			<!--  <a type="submit" href ="UrlServlet?linkUrl=https://www.google.it">https://www.google.it</a>-->
-
 			<button type="submit" value="Conferma" name="pulsante">Conferma</button>
 			<button type="reset" value="Reset" name="pulsante">Reset</button>
 		</form>
 		<table>
 			<tr>
-				<th class="intestazioneTabella">ULTIMI LINK VISITATI PER "${user.getUsername()}"</th>
+				<th class="intestazioneTabella">ULTIMI LINK VISITATI PER "${utente.getUsername()}"</th>
 				
 			</tr>
 			<tr>

@@ -18,10 +18,19 @@
 
 				<label for="user">Username: </label>
 			
-				<input type="text" id="user" name="username" placeholder="Insert username">
+				<input 
+					type="text" 
+					id="user" 
+					name="username" 
+					placeholder="Inserisci username"
+				>
+					<!-- pattern="[A-Za-z\d]{6,12}"
+					title="L'username deve avere una lunghezza tra i 6 e i 12 caratteri e contenere
+						   solamente lettere e numeri" -->
 		
 				<label for="pass">Password: </label>
 			
+				 
 				 <input type="password" id="pass" name="password" placeholder="Insert password">
 		
 			<button type="submit" value="Login" name="pulsante">Login</button>

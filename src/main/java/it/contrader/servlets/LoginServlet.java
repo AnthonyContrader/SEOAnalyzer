@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 			UserDTO dto = service.login(username, password);
 			if (dto != null) {
 				//se il login ha funzionato, salva l'utente nella sessione
-				session.setAttribute("user", dto);
+				session.setAttribute("utente", dto);
 				int id = dto.getId();
 				List<URLDTO> dtoUrl = urlService.read(id);
 				request.setAttribute("listaCronologia", dtoUrl);				
