@@ -48,11 +48,12 @@ public class LoginServlet extends HttpServlet {
 				List<URLDTO> dtoUrl = urlService.read(id);
 				session.setAttribute("listaCronologia", dtoUrl);	
 				session.setAttribute("id", id);
+				request.setAttribute("loginErrato", false);
 			}else {
 				//altrimenti torna alla pagina di login
-				session.setAttribute("errore", "true");
+				request.setAttribute("loginErrato", true);
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-				
+				return;
 			}
 			//esegue una switch cae in base allo usertype per il reindirizzamento
 			switch (dto.getUsertype().toUpperCase()) {

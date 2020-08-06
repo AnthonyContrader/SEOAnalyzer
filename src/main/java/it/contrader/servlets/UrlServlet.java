@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.jsoup.Jsoup;
+
 import it.contrader.converter.URLConverter;
 import it.contrader.dto.*;
 import it.contrader.model.*; 
@@ -36,9 +38,16 @@ public class UrlServlet extends HttpServlet {
 		
 		switch (mode.toLowerCase()) {
 		case "link":
-
 			String linkUrl = request.getParameter("linkUrl").toString();
-
+			
+			try {
+				Jsoup.connect(linkUrl).get();
+			}catch(IOException ioe) {
+				request.setAttribute("urlErrato", true);
+				getServletContext().getRequestDispatcher("/homeuser.jsp").forward(request, response);
+				return;
+			}
+			
 			URLConverter converter = new URLConverter();
 
 			session.setAttribute("url", linkUrl);
