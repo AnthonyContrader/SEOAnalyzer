@@ -24,8 +24,6 @@
 			<form class="url" action="UrlServlet" method="post">
 	
 				<label for="URL">URL</label> 
-				<input type="text" id="url" name="linkUrl" placeholder="Inserisci url"> 
-				
 				<input 
 					type="text"
 					id="url" name="linkUrl"
