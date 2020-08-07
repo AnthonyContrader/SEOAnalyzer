@@ -13,7 +13,8 @@ import org.jsoup.Jsoup;
 
 import it.contrader.converter.URLConverter;
 import it.contrader.dto.*;
-import it.contrader.model.*; 
+import it.contrader.model.*;
+import it.contrader.service.StatisticheService;
 import it.contrader.service.URLService;
 
 
@@ -35,6 +36,7 @@ public class UrlServlet extends HttpServlet {
 		UserDTO utente = (UserDTO)session.getAttribute("utente");
 		String mode = request.getParameter("mode");
 		URLService urlService = new URLService(); 
+		StatisticheService statisticheService = new StatisticheService();
 		
 		switch (mode.toLowerCase()) {
 		case "link":
@@ -54,6 +56,9 @@ public class UrlServlet extends HttpServlet {
 			URL URL = new URL((String)session.getAttribute("url"), utente.getId());
 			URLDTO urldto = converter.toDTO(URL);
 			urlService.insert(urldto);
+			
+			StatisticheDTO statisticheDTO = new StatisticheDTO(1, 1, 0, 0, 0, 0);		
+			statisticheService.update(statisticheDTO);
 			
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;

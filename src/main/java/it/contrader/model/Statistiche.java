@@ -18,7 +18,8 @@ public class Statistiche {
 
 	}
 
-	public Statistiche(int numeroUrl, int numeroParole, int numeroImmagini, int numeroLink, int numeroRicercaParole) {
+	public Statistiche(int id, int numeroUrl, int numeroParole, int numeroImmagini, int numeroLink, int numeroRicercaParole) {
+		this.id = id;
 		this.numeroUrl = numeroUrl;
 		this.numeroParole = numeroParole;
 		this.numeroImmagini = numeroImmagini;
@@ -64,7 +65,7 @@ public class Statistiche {
 	}
 
 	public String toString() {
-		return  id + "\t"  + numeroUrl +"\t\t" + numeroParole + "\t\t" + numeroImmagini + "\t\t" + numeroLink + "\t\t" + numeroRicercaParole;
+		return  id + "\t\t"  + numeroUrl +"\t\t" + numeroParole + "\t\t" + numeroImmagini + "\t\t" + numeroLink + "\t\t" + numeroRicercaParole;
 	}
 
 	public boolean equals(Object obj) {
