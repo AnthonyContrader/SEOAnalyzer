@@ -19,9 +19,9 @@
 
 <div class="main">
 
-
+<div class="ricerche">
 <table>
-	<tr> 
+	<tr class="intestazioneTabella"> 
 		<th>ID utente</th>
 		<th>Username</th>
 		<th>URL</th>
@@ -34,14 +34,14 @@
 		{
 		String[] temp = s.split(",");
 		out.println("<tr>");
-		out.println("<td>" + temp[0] + "</td>");
-		out.println("<td>" + temp[1] + "</td>");
-		out.println("<td>" + temp[2] + "</td>");
+		out.println("<th>" + temp[0] + "</th>");
+		out.println("<th>" + temp[1] + "</th>");
+		out.println("<th>" + temp[2] + "</th>");
 		out.println("</tr>");
 		}
 	%>
 </table>
-
+</div>
 <br>
 <br>
 <br>

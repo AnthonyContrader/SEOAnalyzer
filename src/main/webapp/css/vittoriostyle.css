@@ -24,7 +24,7 @@ div.text{
 	margin-bottom: 5%;
 	width: 90%;
 	font-size: 15px;
-	text-align: center
+	text-align: center;
 }
 
 .footer {
@@ -51,12 +51,8 @@ div.text{
 }
 
 .div-right {
-	//margin-left: 50%;
-	//margin-right: auto;
 	float: left;
 	width: 60%;
-	//background-size: 100% 50%;
-	//background-color: #f2f2f2;
 	color: #00a990;
 	text-align: center;
 	padding: 20px;
@@ -67,15 +63,15 @@ div.text{
 .errore {
 	margin: auto;
 	background-color: #ff9800;
-	
-	//position:fixed;
 	width: 20%;
-	//margin-left: 40%;
-	//margin-right: 40%;
-	//margin-top:40%;
-	//margin-bottom:auto;
-	//z-index:1;
 }
+
+.ricerche {
+	margin-right: auto;
+	color: #00a990;
+	text-align: center;
+}
+
 
 /* headers */
 h1 {
@@ -102,16 +98,12 @@ h2 {
 	
 }
 .login{
-	//position:fixed;
 	heigth:50%;
 	width: 20%;
 	margin-left: 40%;
 	margin-right: 40%;
-	//margin-left:35.6%;
-	//margin-right:44.4%;
 	margin-top: 10%;
 	margin-bottom:auto;
-	//margin: auto;
 	z-index: 1;
 }
 
@@ -160,7 +152,6 @@ a:visited {
 /*Tables*/
 table {
 	border-collapse: collapse;
-	//border: 5px red;
 	width: 100%;
 	float:left;
 	border-radius:4px;

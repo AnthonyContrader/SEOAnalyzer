@@ -23,38 +23,8 @@
 	%>
 
 <br>
-
-	<table>
-		<tr>
-			<th>Username</th>
-			<th>Password</th>
-			<th>Usertype</th>
-			<th></th>
-			<th></th>
-		</tr>
-		<%
-			for (UserDTO u : list) {
-		%>
-		<tr>
-			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
-					<%=u.getUsername()%>
-			</a></td>
-			<td><%=u.getPassword()%></td>
-			<td><%=u.getUsertype()%></td>
-			<td><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
-			</td>
-			<td><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
-			</td>
-
-		</tr>
-		<%
-			}
-		%>
-	</table>
-
-
-
-<form id="floatright" action="UserServlet?mode=insert" method="post">
+<div class="div-left">
+<form action="UserServlet?mode=insert" method="post">
   <div class="row">
     <div class="col-25">
       <label for="user">Username</label>
@@ -85,6 +55,37 @@
   </div>
       <button type="submit" >Insert</button>
 </form>
+</div>
+<div class="div-right">
+	<table>
+		<tr class="intestazioneTabella">
+			<th>Username</th>
+			<th>Password</th>
+			<th>Usertype</th>
+			<th></th>
+			<th></th>
+		</tr>
+		<%
+			for (UserDTO u : list) {
+		%>
+		<tr>
+			<td><a href=UserServlet?mode=read&id=<%=u.getId()%>>
+					<%=u.getUsername()%>
+			</a></td>
+			<td><%=u.getPassword()%></td>
+			<td><%=u.getUsertype()%></td>
+			<td class="button"><a href=UserServlet?mode=read&update=true&id=<%=u.getId()%>>Edit</a>
+			</td>
+			<td class="button"><a href=UserServlet?mode=delete&id=<%=u.getId()%>>Delete</a>
+			</td>
+
+		</tr>
+		<%
+			}
+		%>
+	</table>
+
+</div>
 
 </div>
 <br>
