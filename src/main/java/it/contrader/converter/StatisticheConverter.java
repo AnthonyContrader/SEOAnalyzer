@@ -10,13 +10,13 @@ public class StatisticheConverter implements Converter<Statistiche, StatisticheD
 
 	@Override
 	public StatisticheDTO toDTO(Statistiche entity) {
-		StatisticheDTO statisticheDTO = new StatisticheDTO(entity.getId(), entity.getNumeroParole(), entity.getNumeroImmagini(), entity.getNumeroLink(), entity.getNumeroRicercaParole());
+		StatisticheDTO statisticheDTO = new StatisticheDTO(entity.getId(), entity.getNumeroUrl(), entity.getNumeroParole(), entity.getNumeroImmagini(), entity.getNumeroLink(), entity.getNumeroRicercaParole());
 		return statisticheDTO;
 	}
 
 	@Override
 	public Statistiche toEntity(StatisticheDTO dto) {
-		Statistiche statistiche = new Statistiche(dto.getId(), dto.getNumeroParole(), dto.getNumeroImmagini(), dto.getNumeroLink(), dto.getNumeroRicercaParole());
+		Statistiche statistiche = new Statistiche(dto.getId(), dto.getNumeroUrl(), dto.getNumeroParole(), dto.getNumeroImmagini(), dto.getNumeroLink(), dto.getNumeroRicercaParole());
 		return statistiche;
 	}
 

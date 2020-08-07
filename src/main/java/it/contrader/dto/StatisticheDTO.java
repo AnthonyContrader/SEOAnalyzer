@@ -18,7 +18,8 @@ public class StatisticheDTO {
 
 	}
 
-	public StatisticheDTO(int numeroUrl, int numeroParole, int numeroImmagini, int numeroLink, int numeroRicercaParole) {
+	public StatisticheDTO(int id, int numeroUrl, int numeroParole, int numeroImmagini, int numeroLink, int numeroRicercaParole) {
+		this.id = id;
 		this.numeroUrl = numeroUrl;
 		this.numeroParole = numeroParole;
 		this.numeroImmagini = numeroImmagini;

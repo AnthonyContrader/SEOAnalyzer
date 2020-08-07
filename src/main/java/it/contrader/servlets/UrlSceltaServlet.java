@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.contrader.dto.StatisticheDTO;
+import it.contrader.service.StatisticheService;
 import it.contrader.servlets.utils.*;
 
 /**
@@ -22,30 +24,36 @@ public class UrlSceltaServlet extends HttpServlet {
 		final HttpSession session = request.getSession();
 		String choice = request.getParameter("scelta");
 		request.setAttribute("url", session.getAttribute("url").toString());
+		StatisticheService statisticheService = new StatisticheService();
+		StatisticheDTO statisticheDTO = null;
 		switch( choice ) {
 		case "parole":
 			ContaParole.conta(request);
+			statisticheDTO = new StatisticheDTO(1, 0, (int)request.getAttribute("numeroParole"), 0, 0, 0);		
+			statisticheService.update(statisticheDTO);
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "immagini":
 			ContaImmagini.conta(request);
+			statisticheDTO = new StatisticheDTO(1, 0, 0, (int)request.getAttribute("numImg"), 0, 0);		
+			statisticheService.update(statisticheDTO);
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "link":
 			ContaLink.conta(request);
+			statisticheDTO = new StatisticheDTO(1, 0, 0, 0, (int)request.getAttribute("numLink"), 0);		
+			statisticheService.update(statisticheDTO);
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "parola":
 			if(request.getParameter("test")!=null)
 			{
-				//todo
 				request.setAttribute("cerca", request.getParameter("cercaparola").toString());
-				System.out.println(request.getAttribute("url").toString());
 				ContaParole.cerca(request);
-				System.out.println(request.getAttribute("trovata"));
+				statisticheDTO = new StatisticheDTO(1, 0, 0, 0, 0, 1);		
+				statisticheService.update(statisticheDTO);
 			}
 			request.setAttribute("parolaTest", "yes");
-			System.out.println("si");
 			getServletContext().getRequestDispatcher("/urloperazioni.jsp").forward(request, response);
 			break;
 		case "ottimizza":

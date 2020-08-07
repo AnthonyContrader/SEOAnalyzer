@@ -228,7 +228,6 @@ public class ContaParole {
 				}
 				paroleTrovate = 0;
 			}
-			System.out.println("Argomento in conta parole = " + argomentoTrovato);
 			request.setAttribute("argomento", argomentoTrovato);
 		}
 	}
