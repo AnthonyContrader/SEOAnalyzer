@@ -52,7 +52,7 @@
 				out.println("<tr>");
 				out.println("<th>Argomento</th>");
 				out.println("<td>" + argomento + "</td>");
-				out.println("</tr>")
+				out.println("</tr>");
 				out.println("</table>");
 				request.setAttribute("numeroParole", null);
 				request.setAttribute("argomento", null);
