@@ -42,8 +42,18 @@
 				List<String> list = (List<String>) request.getAttribute("listaParole");
 				for (String s : list)
 					out.println(s + "<br>");
-				out.println("<p> Il numero di parole presenti nella pagina è: " + nParole + "</p>");
-				out.println("L'argomento rilevato è: " + argomento);
+// 				out.println("<p> Il numero di parole presenti nella pagina è: " + nParole + "</p>");
+// 				out.println("L'argomento rilevato è: " + argomento);
+				out.println("<table>");
+				out.println("<tr>");
+				out.println("<th>Numero di parole</th>");
+				out.println("<td>" + nParole + "</td>");
+				out.println("</tr>");
+				out.println("<tr>");
+				out.println("<th>Argomento</th>");
+				out.println("<td>" + argomento + "</td>");
+				out.println("</tr>")
+				out.println("</table>");
 				request.setAttribute("numeroParole", null);
 				request.setAttribute("argomento", null);
 				request.setAttribute("listaParole", null);
@@ -51,13 +61,25 @@
 			// conta link
 			if (request.getAttribute("numLink") != null) {
 				String s = request.getAttribute("numLink").toString();
-				out.println("<p> Il numero di link presenti nella pagina è: " + s + "</p>");
+				//out.println("<p> Il numero di link presenti nella pagina è: " + s + "</p>");
+				out.println("<table>");
+				out.println("<tr>");
+				out.println("<th>Numero di link</th>");
+				out.println("<td>" + s + "</td>");
+				out.println("</tr>");			
+				out.println("</table>");
 				request.setAttribute("numLink", null);
 			}
 			//conta immagini
 			if (request.getAttribute("numImg") != null) {
 				String s = request.getAttribute("numImg").toString();
-				out.println("<p> Il numero di immagini presenti nella pagina è: " + s + "</p>");
+				//out.println("<p> Il numero di immagini presenti nella pagina è: " + s + "</p>");
+				out.println("<table>");
+				out.println("<tr>");
+				out.println("<th>Numero di immagini</th>");
+				out.println("<td>" + s + "</td>");
+				out.println("</tr>");			
+				out.println("</table>");
 				request.setAttribute("numImg", null);
 			}
 			//ottimizza

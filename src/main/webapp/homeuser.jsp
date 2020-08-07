@@ -21,7 +21,7 @@
 		<h1>Benvenuto ${utente.getUsername()}</h1>
 		<div class="div-left">
 			<form class="url" action="UrlServlet?mode=link" method="post">
-				<label for="URL">URL</label> 
+				<label for="URL"><h3>URL</h3></label> 
 				<input 
 					type="text" 
 					id="url"

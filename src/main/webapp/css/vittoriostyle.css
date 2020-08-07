@@ -15,7 +15,7 @@ div.text{
 	text-align: center;
 	font-size: 800%;
 	font-family: sans-serif;
-	color: #00a990;
+	color: #1e90ff;
 }
 
 .main {
@@ -30,7 +30,7 @@ div.text{
 .footer {
 	text-align: center;
 	font-size: 70%;
-	background-color: #00a990;
+	background-color: #1e90ff;
 	color: #ffffff;
 	width: 100%;
 	border-radius: 7px;
@@ -43,8 +43,7 @@ div.text{
 .div-left {
 	width: 400px;
 	float: left;
-	background-color: #f2f2f2;
-	text: #00a990;
+	text: #1e90ff;
 	display: inline-block;
 	margin: 0 auto;
 	text-align: center;
@@ -53,7 +52,7 @@ div.text{
 .div-right {
 	float: left;
 	width: 60%;
-	color: #00a990;
+	color: #1e90ff;
 	text-align: center;
 	padding: 20px;
 	padding-top: 0px;
@@ -68,7 +67,7 @@ div.text{
 
 .ricerche {
 	margin-right: auto;
-	color: #00a990;
+	color: #1e90ff;
 	text-align: center;
 }
 
@@ -79,7 +78,7 @@ h1 {
 	text-align: center;
 	size: 300%;
 	font-family: sans-serif;
-	color: #00a990;
+	color: #1e90ff;
 }
 
 h2 {
@@ -121,8 +120,28 @@ h2 {
 	clear: both;
 	width:100%;
 	text-align: center;
+	font-weight: bold;
 }
 
+.login button {
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+  background-color:  #1e90ff;
+  border: none;
+  color: white;
+  padding: 3% 3%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 130%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  cursor: pointer;
+  border-radius: 7px;
+  width:80%;
+}
 /* Anchors */
 a {
 	text-decoration: none;
@@ -133,7 +152,7 @@ a {
 }
 
 a:link {
-	color: #00a990;
+	color: #1e90ff;
 }
 
 .a:link {
@@ -142,7 +161,7 @@ a:link {
 
 /* visited link */
 a:visited {
-	color: #00a990;
+	color: #1e90ff;
 }
 
 .a:visited {
@@ -166,12 +185,12 @@ th, td {
 
 
 tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: #add8e6;
 	width: 100%;
 }
 
 .intestazioneTabella {
-	background-color: #00a990;
+	background-color: #1e90ff;
 	color: white;
 }
 
@@ -222,7 +241,7 @@ input {
 }
 
 input:hover {
-  background-color:  #00ccad;
+  background-color:  #add8e6;
 }
 
 
@@ -230,7 +249,7 @@ res {
 	float: left;
 	width: 25%;
 	margin-top: 3%;
-	background-color: #00a990;
+	background-color: #1e90ff;
 	border-radius: 7px;
 	color: #ffffff;
 	text-align:center;
@@ -239,8 +258,9 @@ res {
 form {
 	width: auto;
 	border-radius: 7px;
-	background-color: #f2f2f2;
+	background-color: white;
 	padding: 20px;
+	padding-top: 0px;
 }
 
 .col-25 {
@@ -262,17 +282,43 @@ form {
   clear: both;
 }
 
+label[for=URL] {
+  padding: 0px 12px 12px 12px;
+  display: inline-block;
+  color: #1e90ff;
+  margin-left: 15%;
+}
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
+  color: #1e90ff;
 }
 
-
+.url button {
+  -webkit-transition-duration: 0.1s; /* Safari */
+  transition-duration: 0.1s;
+  background-color:  #1e90ff;
+  border: none;
+  color: white;
+  padding: 3% 3%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 130%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  cursor: pointer;
+  border-radius: 7px;
+  width:80%;
+}
 
 button {
   -webkit-transition-duration: 0.1s; /* Safari */
   transition-duration: 0.1s;
-  background-color:  #00a990;
+  background-color:  #1e90ff;
   border: none;
   color: white;
   padding: 3% 3%;
@@ -290,7 +336,7 @@ button {
 }
 
 button:hover {
-  background-color:  #00ccad; 
+  background-color:  #add8e6; 
   color: white;
 }
 
@@ -317,7 +363,7 @@ button:hover {
 
 /*Navigation bar*/
 div.navbar {
-	background: #00a990;
+	background: #1e90ff;
 	overflow: hidden;
 	position: sticky;
 	width: 100%;
@@ -337,16 +383,16 @@ div.navbar a {
 	text-decoration: none;
 	font-size: 17px;
 	border-radius: 7px;
-	background: #00a990;
+	background: #1e90ff;
 }
 
 div.navbar a:hover {
-	background: #00ccad;
+	background: #add8e6;
 	color: #ffffff;
 }
 
 div.navbar a.active {
-	background: #00ccad;
+	background: #add8e6;
 	color: #ffffff;
 }
 
