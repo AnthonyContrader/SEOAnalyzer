@@ -1,7 +1,7 @@
 package it.contrader.session;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
 
 public class SessionHibernate {
 
@@ -9,7 +9,7 @@ public class SessionHibernate {
 	
 	static {
 		try {
-			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+			sessionFactory = new Configuration().configure().buildSessionFactory();
 		}
 		catch (Throwable ex)
 		{

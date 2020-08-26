@@ -103,11 +103,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.6-Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 		</dependency>
 		<dependency>
@@ -154,6 +149,13 @@
 			<artifactId>hibernate-vibur</artifactId>
 			<version>6.0.0.Alpha6</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.daedafusion</groupId>
+			<artifactId>hibernate-utils</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 
 	</dependencies>
 	<build>
