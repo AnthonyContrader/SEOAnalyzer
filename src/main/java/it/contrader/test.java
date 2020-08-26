@@ -22,9 +22,9 @@ public class test {
 		u.setPassword("rossi");
 		u.setUsertype(Usertype.USER);
 		System.out.println(u.getUsertype());
-		session.beginTransaction();
+		/*session.beginTransaction();
 		session.save(u);
-		session.getTransaction().commit();
+		session.getTransaction().commit();*/
 		session.close();
 		
 		Session session2 = factory.openSession();
@@ -32,7 +32,7 @@ public class test {
 		List<User> l = (List<User>)session2.createQuery("from User").list();
 		for(User us: l)
 		{
-			System.out.println(us.getUsername().toString());
+			System.out.println(us.getUsertype().toString());
 		}
 		factory.close();
 	}
