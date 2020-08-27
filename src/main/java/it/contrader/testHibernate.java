@@ -9,7 +9,6 @@ import it.contrader.model.User;
 
 @Repository
 @Transactional
-public interface testHibernate extends CrudRepository<User, Long> {
+public interface testHibernate  {
 
-	User findByUsernameAndPassword(String username, String password);
 }

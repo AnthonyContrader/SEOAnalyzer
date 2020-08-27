@@ -14,7 +14,7 @@ import it.contrader.model.User.Usertype;
 import it.contrader.service.AbstractService;
 import it.contrader.session.SessionHibernate;
 
-@Service
+
 
 public class test extends AbstractService<User, UserDTO> {
 
@@ -40,13 +40,13 @@ public class test extends AbstractService<User, UserDTO> {
 		Session session2 = factory.openSession();
 		session2.beginTransaction();
 		u2.setUsername("mario");
-		u2 = hibernate.findByUsernameAndPassword("mario", "rossi");
-		System.out.println(u2.getUsername().toString());
-		List<User> l = (List<User>)session2.createQuery("from User").list();
-		for(User us: l)
+		//u2 = hibernate.findByUsernameAndPassword("mario", "rossi");
+		//System.out.println(u2.getUsername().toString());
+		//List<User> l = (List<User>)session2.createQuery("from User").list();
+		/*for(User us: l)
 		{
 			System.out.println(us.getUsertype().toString());
-		}
+		}*/
 		factory.close();
 	}
 
