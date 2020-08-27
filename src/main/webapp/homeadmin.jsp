@@ -29,7 +29,10 @@
 	<div class="main">
 		<h1>Welcome ${user.getUsername()}</h1>
 
-		"INSERIRE QUI TUTTE LE STATISTICHE DELL'ADMIN!"
+		<h2>INSERIRE QUI TUTTE LE STATISTICHE DELL'ADMIN!</h2>
+		<h3>Numero di utenti registrati = ${session.getAttribute("numeroUtenti")}</h3>
+		<h3>Numero di utenti ADMIN registrati = ${session.getAttribute("numeroUtentiAdmin")}</h3>
+		<h3>Numero di utenti USER registrati = ${session.getAttribute("numeroUtentiUser") }</h3>
 
 
 	</div>
