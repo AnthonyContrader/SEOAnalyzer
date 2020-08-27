@@ -21,16 +21,9 @@
 	<div class="main">
 		<h1>Benvenuto ${user.getUsername()}</h1>
 		<div class="div-left">
-			<form class="url" action="UrlServlet?mode=link" method="post">
+			<form class="url" action="/user/analyze" method="post">
 				<label for="URL"><h3>URL</h3></label> 
-				<input 
-					type="text" 
-					id="url"
-					name="linkUrl" 
-					placeholder="Inserisci url" pattern="https?://.+"
-					title="L'indirizzo deve iniziare con https oppure con http"
-					required>
-
+				<input type="text" id="url" name="linkUrl" placeholder="Inserisci url" pattern="https?://.+" title="L'indirizzo deve iniziare con https oppure con http" required>
 				<button type="submit" value="Conferma" name="pulsante">Conferma</button>
 				<button type="reset" value="Reset" name="pulsante">Reset</button>
 			</form>
