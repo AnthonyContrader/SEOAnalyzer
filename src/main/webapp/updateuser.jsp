@@ -16,8 +16,8 @@
 <%@ include file="./css/header.jsp" %>
 <div class="navbar">
   <a href="/homeadmin.jsp">Home</a>
-  <a class="active" href="/user/getall">Users</a>
-  <a href="/user/logout" id="logout">Logout</a>
+  <a class="active" href="/admin/getall">Users</a>
+  <a href="/admin/logout" id="logout">Logout</a>
 </div>
 <br>
 <div class="main">
@@ -25,7 +25,7 @@
 <%UserDTO u = (UserDTO) request.getSession().getAttribute("dto");%>
 
 
-<form id="floatleft" action="/user/update" method="post">
+<form id="floatleft" action="/admin/update" method="post">
   <div class="row">
     <div class="col-25">
       <label for="user">Username</label>

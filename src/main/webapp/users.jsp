@@ -14,8 +14,9 @@
 	<%@ include file="./css/header.jsp"%>
 
 	<div class="navbar">
-		<a href="/homeadmin.jsp">Home</a> <a class="active"
-			href="/user/getall">Users</a> <a href="/user/logout" id="logout">Logout</a>
+		<a href="/homeadmin.jsp">Home</a> 
+		<a class="active" href="/admin/getall">Users</a>
+		<a href="/admin/logout" id="logout">Logout</a>
 	</div>
 	<div class="main">
 		<%
@@ -36,14 +37,11 @@
 				for (UserDTO u : list) {
 			%>
 			<tr>
-				<td><a href="/user/read?id=<%=u.getId()%>"> <%=u.getUsername()%>
-				</a></td>
-				<td><%=u.getPassword()%></td>
-				<td><%=u.getUsertype()%></td>
-				<td><a href="/user/preupdate?id=<%=u.getId()%>">Edit</a></td>
-
-
-				<td><a href="/user/delete?id=<%=u.getId()%>">Delete</a></td>
+				<td> <a href="/admin/read?id=<%=u.getId()%>"> <%=u.getUsername()%></a> </td>
+				<td> <%=u.getPassword()%> </td>
+				<td> <%=u.getUsertype()%> </td>
+				<td> <a href="/admin/preupdate?id=<%=u.getId()%>">Edit</a> </td>
+				<td> <a href="/admin/delete?id=<%=u.getId()%>">Delete</a> </td>
 
 			</tr>
 			<%
