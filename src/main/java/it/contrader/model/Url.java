@@ -11,36 +11,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- * 
- * Model dell'entità User. Contiene l'enum che definisce gli usertype (salvati come interi
- * a partire da 0 sul db).
- * 
- * @author Vittorio Valent & Girolamo Murdaca
- * 
- * @see UserDTO
- */
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Url {
 	
-	public enum Usertype {
-		ADMIN,
-		USER
-	}
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_user")
 	private long id;
 	
-	@Column(unique = true)
-	private String username;
+	@Column(name = "url_name")
+	private String url;
 	
-	private String password;
-
-	private Usertype usertype;
+	@Column(name = "id_user")
+	private long idUser;
 	
 }
