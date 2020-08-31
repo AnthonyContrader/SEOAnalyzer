@@ -14,7 +14,8 @@
 	<%@ include file="./css/header.jsp"%>
 
 	<div class="navbar">
-		<a href="/homeadmin.jsp">Home</a> 
+		<!--  <a class="active" href="/homeadmin.jsp">Home</a> -->
+		<a href=/home/index>Home</a>
 		<a class="active" href="/admin/getall">Users</a>
 		<a href="/admin/logout" id="logout">Logout</a>
 	</div>
@@ -51,7 +52,7 @@
 
 
 
-		<form id="floatright" action="/user/insert" method="post">
+		<form id="floatright" action="/admin/insert" method="post">
 			<div class="row">
 				<div class="col-25">
 					<label for="user">Username</label>

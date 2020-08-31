@@ -10,7 +10,7 @@ import it.contrader.dto.UserDTO;
 import it.contrader.model.User;
 
 @Service
-public class UserService extends AbstractService<User, UserDTO> {
+public class LoginService extends AbstractService<User, UserDTO> {
 
 	@Autowired
 	private UserConverter converter;

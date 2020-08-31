@@ -9,16 +9,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import it.contrader.dto.StatisticheDTO;
 import it.contrader.dto.UserDTO;
+import it.contrader.model.User;
 import it.contrader.model.User.Usertype;
-import it.contrader.service.UserService;
+import it.contrader.service.StatisticheService;
+import it.contrader.service.LoginService;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
 	
 	@Autowired
-	private UserService service;
+	private LoginService service;
+	
+	@Autowired
+	private StatisticheService statisticheService;
 
 	@GetMapping("/getall")
 	public String getAll(HttpServletRequest request) {
@@ -28,6 +34,16 @@ public class AdminController {
 
 	@GetMapping("/delete")
 	public String delete(HttpServletRequest request, @RequestParam("id") Long id) {
+		UserDTO userDTO = service.read(id);
+		Usertype usertype = userDTO.getUsertype();
+		StatisticheDTO statisticheDTO = statisticheService.read(1);
+		statisticheDTO.setNumeroUtenti(statisticheDTO.getNumeroUtenti()-1);
+		if( usertype.equals(User.Usertype.ADMIN) ) {
+			statisticheDTO.setNumeroUtentiAdmin(statisticheDTO.getNumeroUtentiAdmin()-1);
+		}else {
+			statisticheDTO.setNumeroUtentiUser(statisticheDTO.getNumeroUtentiUser()-1);
+		}
+		statisticheService.update(statisticheDTO);
 		service.delete(id);
 		setAll(request);
 		return "users";
@@ -42,7 +58,19 @@ public class AdminController {
 	@PostMapping("/update")
 	public String update(HttpServletRequest request, @RequestParam("id") Long id, @RequestParam("username") String username,
 			@RequestParam("password") String password, @RequestParam("usertype") Usertype usertype) {
-
+		UserDTO userDTO = service.read(id);
+		Usertype oldUsertype = userDTO.getUsertype();
+		if( !oldUsertype.equals(usertype) ) {
+			StatisticheDTO statisticheDTO = statisticheService.read(1);
+			if( usertype.equals(User.Usertype.USER) ) {
+				statisticheDTO.setNumeroUtentiAdmin(statisticheDTO.getNumeroUtentiAdmin()-1);
+				statisticheDTO.setNumeroUtentiUser(statisticheDTO.getNumeroUtentiUser()+1);
+			}else {
+				statisticheDTO.setNumeroUtentiAdmin(statisticheDTO.getNumeroUtentiAdmin()+1);
+				statisticheDTO.setNumeroUtentiUser(statisticheDTO.getNumeroUtentiUser()-1);
+			}
+			statisticheService.update(statisticheDTO);
+		}
 		UserDTO dto = new UserDTO();
 		dto.setId(id);
 		dto.setUsername(username);
@@ -62,6 +90,14 @@ public class AdminController {
 		dto.setPassword(password);
 		dto.setUsertype(usertype);
 		service.insert(dto);
+		StatisticheDTO statisticheDTO = statisticheService.read(1);
+		statisticheDTO.setNumeroUtenti(statisticheDTO.getNumeroUtenti()+1);
+		if( usertype.equals(User.Usertype.ADMIN) ) {
+			statisticheDTO.setNumeroUtentiAdmin(statisticheDTO.getNumeroUtentiAdmin()+1);
+		}else {
+			statisticheDTO.setNumeroUtentiUser(statisticheDTO.getNumeroUtentiUser()+1);
+		}
+		statisticheService.update(statisticheDTO);
 		setAll(request);
 		return "users";
 	}

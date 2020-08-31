@@ -92,6 +92,17 @@ h2 {
 	text-align: center;
 }
 
+.container{
+	display:flex;
+	column: 1;
+}
+
+#title1 #title2{
+	font-size: 30;
+	text-align: center;
+}
+
+
 /* Anchors */
 a {
 	text-decoration: none;

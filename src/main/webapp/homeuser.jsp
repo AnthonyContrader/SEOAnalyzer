@@ -7,14 +7,14 @@
 <meta charset="ISO-8859-1">
 <title>Home User</title>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
-<link href="css/vittoriostyle2.css" rel="stylesheet">
+<link href="/css/vittoriostyle2.css" rel="stylesheet">
 </head>
 <body>
-	<%@include file="css/header.jsp"%>
+	<%@include file="/css/header.jsp"%>
 
 
 	<div class="navbar">
-		<a class="active" href="/homeuser.jsp">Home</a> 
+		<a class="active" href="/home/index">Home</a> 
 		<a href="/user/logout"	id="logout">Logout</a>
 	</div>
 

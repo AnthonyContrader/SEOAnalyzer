@@ -62,9 +62,7 @@ public class Ottimizzazione {
 				if( nParoleParagrafo < 150 ) nParagrafiMeno150parole++;
 				nParoleParagrafo = 0;
 			}
-			reader.close();
-			DecimalFormat df = new DecimalFormat("#.##");      
-			
+			reader.close();			
 
 			double percentualeFrasiMeno25Parole = (nFrasiMeno25Parole * 100) / (double)nFrasiTot;
 			//percentualeFrasiMeno25Parole = Double.valueOf(df.format(percentualeFrasiMeno25Parole));
