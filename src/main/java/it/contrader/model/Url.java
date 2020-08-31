@@ -1,11 +1,6 @@
 package it.contrader.model;
 
-import javax.persistence.Entity;
-
 import javax.persistence.*;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,13 +14,14 @@ public class Url {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_user")
+	@Column(name = "id_url")
 	private long id;
 	
 	@Column(name = "url_name")
-	private String url;
+	private String urlName;
 	
-	@Column(name = "id_user")
+	@ManyToOne(optional=false, targetEntity=User.class)
+    @JoinColumn(name="idUser",referencedColumnName="id_user")
 	private long idUser;
 	
 }

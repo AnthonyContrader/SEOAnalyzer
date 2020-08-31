@@ -25,7 +25,8 @@ public class Statistiche {
 	@Column(name = "id_statistiche")
 	private long id;
 	
-	@Column(name = "id_url")
+	@ManyToOne(optional=false, targetEntity=Url.class)
+    @JoinColumn(name="idUrl",referencedColumnName="id_url")
 	private long idUrl;
 	
 	@Column(name = "numero_parole")
