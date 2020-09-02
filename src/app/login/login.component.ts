@@ -13,7 +13,11 @@ export class LoginComponent implements OnInit {
 
   loginDTO: LoginDTO;
 
-  constructor(private service: UserService, private router: Router) { }
+  logininfo = 'Please insert username and password to Login or Sign Up';
+  
+  constructor(private service: UserService, private router: Router) {}
+
+
 
   ngOnInit() {
   }
@@ -25,7 +29,7 @@ export class LoginComponent implements OnInit {
 
       if (user != null) {
         localStorage.setItem('currentUser', JSON.stringify(user));
-
+        console.log(user.usertype.toString());
         switch (user.usertype.toString()) {
           case 'ADMIN': {
             this.router.navigate(['/admin-dashboard']);
