@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { AnalyzeComponent } from './analyze/analyze.component';
 
 /**
  * Modulo dell user, qui vengono dichiarate le component che utilizza 
@@ -13,7 +14,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
  * @see AdminRoutingModule
  */
 @NgModule({
-  declarations: [UserDashboardComponent],
+  declarations: [UserDashboardComponent, AnalyzeComponent],
   imports: [
     CommonModule,
     UserRoutingModule,

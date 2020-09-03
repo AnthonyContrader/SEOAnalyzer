@@ -17,7 +17,7 @@ import { RouterModule } from '@angular/router';
  * @see AdminLayoutComponent
  */
 @NgModule({
-  declarations: [AdminLayoutComponent, AdminMenuComponent, HeaderComponent],
+  declarations: [AdminLayoutComponent, AdminMenuComponent, HeaderComponent, UserLayoutComponent, UserMenuComponent],
   imports: [
     CommonModule,
     RouterModule

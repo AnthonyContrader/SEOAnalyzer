@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserLayoutComponent } from '../layout/user-layout/user-layout.component';
+import { AnalyzeComponent } from './analyze/analyze.component';
 
 /**
  * Modulo di routing dello user. Qui ci sono i percorsi che uno user può seguire:
@@ -17,7 +18,8 @@ import { UserLayoutComponent } from '../layout/user-layout/user-layout.component
  */
 const routes: Routes = [
   { path: 'user-dashboard',component: UserLayoutComponent, children:[
-    { path: '', component: UserDashboardComponent}
+    { path: '', component: UserDashboardComponent},
+    { path: 'analyze', component: AnalyzeComponent}
   ]}
 ];
 
